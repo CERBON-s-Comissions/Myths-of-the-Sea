@@ -18,10 +18,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.cerbon.ml_template.fabric.ModNameFabric"
+      "com.cerbon.myths_of_the_sea.fabric.MythsOfTheSeaFabric"
     ],
     "client": [
-      "com.cerbon.ml_template.fabric.ModNameFabric"
+      "com.cerbon.myths_of_the_sea.fabric.MythsOfTheSeaFabric"
     ]
   },
   "mixins": [
