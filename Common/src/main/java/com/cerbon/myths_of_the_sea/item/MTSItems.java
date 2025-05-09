@@ -14,6 +14,10 @@ import java.util.function.Supplier;
 public final class MTSItems {
     public static final ResourcefulRegistry<Item> ITEMS = ResourcefulRegistries.create(BuiltInRegistries.ITEM, MythsOfTheSea.MOD_ID);
 
+    public static final RegistryEntry<Item> BAKE_KUJIRA_BONE = registerItem("bake_kujira_bone");
+
+    public static final RegistryEntry<Item> BUNYIP_FANG = registerItem("bunyip_fang");
+
     public static final RegistryEntry<Item> HIPPOCAMPUS_EYE = registerItem("hippocampus_eye");
 
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
