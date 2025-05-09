@@ -23,6 +23,8 @@ public class MTSLanguageProvider extends LanguageProvider {
         MTSItems.ITEMS.getEntries().forEach(item -> addItemTranslation(item.get()));
 
         addPotionTranslation(MTSPotions.VERY_LONG_NIGHT_VISION.get(), "Night Vision");
+
+        add("itemGroup.myths_of_the_sea", "Myths of The Sea");
     }
 
     private void addItemTranslation(Item item) {

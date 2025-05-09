@@ -1,5 +1,6 @@
 package com.cerbon.myths_of_the_sea;
 
+import com.cerbon.myths_of_the_sea.creative_tab.MTSCreativeModeTabs;
 import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.potion.MTSPotions;
 import com.mojang.logging.LogUtils;
@@ -13,6 +14,7 @@ public class MythsOfTheSea {
 
 	public static void init() {
 		MTSItems.register();
+		MTSCreativeModeTabs.register();
 		MTSPotions.register();
 	}
 }
