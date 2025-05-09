@@ -6,6 +6,7 @@
 /Common/.gradle/
 /Common/build/
 /Common/run
+/Common/src/main/generated/.cache
 
 /Fabric/.gradle/
 /Fabric/build/

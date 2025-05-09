@@ -4,6 +4,7 @@
   "package": "com.cerbon.myths_of_the_sea.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ServerPlayerMixin"
   ],
   "client": [
     "test.TestMixin"
