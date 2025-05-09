@@ -14,6 +14,8 @@ import java.util.function.Supplier;
 public final class MTSItems {
     public static final ResourcefulRegistry<Item> ITEMS = ResourcefulRegistries.create(BuiltInRegistries.ITEM, MythsOfTheSea.MOD_ID);
 
+    public static final RegistryEntry<Item> HIPPOCAMPUS_EYE = registerItem("hippocampus_eye");
+
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
             () -> new LeviathanHeartItem(new Item.Properties().food(
                     new FoodProperties.Builder()

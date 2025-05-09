@@ -2,6 +2,7 @@ package com.cerbon.myths_of_the_sea.forge;
 
 import com.cerbon.myths_of_the_sea.MythsOfTheSea;
 import com.cerbon.myths_of_the_sea.forge.datagen.MTSDatagen;
+import com.cerbon.myths_of_the_sea.forge.recipe.brewing.BrewingRecipes;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -14,6 +15,7 @@ public class MythsOfTheSeaForge {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        modEventBus.addListener(BrewingRecipes::register);
         modEventBus.addListener(MTSDatagen::onGatherData);
     }
 }

@@ -14,6 +14,7 @@ public class MTSItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(MTSItems.HIPPOCAMPUS_EYE.get());
         basicItem(MTSItems.LEVIATHAN_HEART.get());
     }
 }

@@ -1,6 +1,7 @@
 package com.cerbon.myths_of_the_sea;
 
 import com.cerbon.myths_of_the_sea.item.MTSItems;
+import com.cerbon.myths_of_the_sea.potion.MTSPotions;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
@@ -12,5 +13,6 @@ public class MythsOfTheSea {
 
 	public static void init() {
 		MTSItems.register();
+		MTSPotions.register();
 	}
 }
