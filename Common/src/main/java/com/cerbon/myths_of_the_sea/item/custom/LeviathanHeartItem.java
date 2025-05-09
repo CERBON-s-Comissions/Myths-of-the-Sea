@@ -9,9 +9,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class LeviathanHeart extends Item {
+public class LeviathanHeartItem extends Item {
 
-    public LeviathanHeart(Properties properties) {
+    public LeviathanHeartItem(Properties properties) {
         super(properties);
     }
 

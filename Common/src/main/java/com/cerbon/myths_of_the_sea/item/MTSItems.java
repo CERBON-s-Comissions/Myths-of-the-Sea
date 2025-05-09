@@ -4,7 +4,7 @@ import com.cerbon.cerbons_api.api.registry.RegistryEntry;
 import com.cerbon.cerbons_api.api.registry.ResourcefulRegistries;
 import com.cerbon.cerbons_api.api.registry.ResourcefulRegistry;
 import com.cerbon.myths_of_the_sea.MythsOfTheSea;
-import com.cerbon.myths_of_the_sea.item.custom.LeviathanHeart;
+import com.cerbon.myths_of_the_sea.item.custom.LeviathanHeartItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -15,7 +15,7 @@ public final class MTSItems {
     public static final ResourcefulRegistry<Item> ITEMS = ResourcefulRegistries.create(BuiltInRegistries.ITEM, MythsOfTheSea.MOD_ID);
 
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
-            () -> new LeviathanHeart(new Item.Properties().food(
+            () -> new LeviathanHeartItem(new Item.Properties().food(
                     new FoodProperties.Builder()
                             .alwaysEat()
                             .nutrition(4)
