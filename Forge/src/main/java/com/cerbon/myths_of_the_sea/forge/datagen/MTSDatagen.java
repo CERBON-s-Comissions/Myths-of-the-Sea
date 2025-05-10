@@ -2,6 +2,7 @@ package com.cerbon.myths_of_the_sea.forge.datagen;
 
 import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSItemModelProvider;
 import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSLanguageProvider;
+import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -20,5 +21,7 @@ public class MTSDatagen {
 
         generator.addProvider(event.includeClient(), new MTSItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new MTSLanguageProvider(packOutput));
+
+        generator.addProvider(event.includeServer(), new MTSRecipeProvider(packOutput));
     }
 }
