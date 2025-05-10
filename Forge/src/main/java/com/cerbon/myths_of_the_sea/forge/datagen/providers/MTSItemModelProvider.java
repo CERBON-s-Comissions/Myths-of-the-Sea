@@ -18,5 +18,7 @@ public class MTSItemModelProvider extends ItemModelProvider {
         basicItem(MTSItems.BUNYIP_FANG.get());
         basicItem(MTSItems.HIPPOCAMPUS_EYE.get());
         basicItem(MTSItems.LEVIATHAN_HEART.get());
+
+        MTSItems.BONE_ARMOR_SET.values().forEach(armorItem -> basicItem(armorItem.get()));
     }
 }
