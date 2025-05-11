@@ -30,6 +30,9 @@ dependencies {
     // Mod Dependencies
     modImplementation "com.cerbon:cerbons_api-fabric-${minecraft_version}:${cerbons_api_version}"
 
+    modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
+    implementation "com.eliotlash.mclib:mclib:20"
+
     // Useful Mods
     modCompileOnlyApi "mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}"
     modRuntimeOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
@@ -67,7 +70,8 @@ processResources {
             issues_url                       : issues_url,
             curseforge_url                   : curseforge_url,
             logo_file                        : logo_file,
-            cerbons_api_version_range_fabric : cerbons_api_version_range_fabric
+            cerbons_api_version_range_fabric : cerbons_api_version_range_fabric,
+            geckolib_version_range_fabric    : geckolib_version_range_fabric
     ]
     inputs.properties replaceProperties
 
