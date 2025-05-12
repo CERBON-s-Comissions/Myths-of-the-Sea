@@ -35,6 +35,11 @@ public final class MTSItems {
             "kraken_tentacle"
     );
 
+    public static final RegistryEntry<Item> BUNYIP_CLAW = registerItem(
+            Services.PLATFORM.bunyipClawItem(5.0F, -2.4F, new Item.Properties().durability(250)),
+            "bunyip_claw"
+    );
+
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
             () -> new LeviathanHeartItem(new Item.Properties().food(
                     new FoodProperties.Builder()

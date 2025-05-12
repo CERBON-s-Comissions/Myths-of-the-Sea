@@ -9,6 +9,8 @@ public interface IPlatformHelper {
 
     Supplier<Item> krakenTentacleItem(Item.Properties properties);
 
+    Supplier<Item> bunyipClawItem(float attackDamage, float attackSpeed, Item.Properties properties);
+
     Attribute blockReachAttribute();
 
     Attribute entityReachAttribute();

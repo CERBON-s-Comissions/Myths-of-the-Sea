@@ -1,0 +1,109 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "builtin/entity",
+  "texture_size": [
+    256,
+    256
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        70,
+        0,
+        0
+      ],
+      "translation": [
+        -0.25,
+        -2,
+        -6.75
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        70,
+        0,
+        0
+      ],
+      "translation": [
+        0.25,
+        -2,
+        -6.75
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        30.21,
+        28.01,
+        -0.98
+      ],
+      "translation": [
+        -1.25,
+        1.75,
+        0.75
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        30.21,
+        28.01,
+        -0.98
+      ],
+      "translation": [
+        -1.25,
+        1.75,
+        0.75
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        4.25,
+        0
+      ]
+    },
+    "gui": {
+      "rotation": [
+        93.89,
+        66.93,
+        -55.58
+      ],
+      "translation": [
+        -1,
+        -3,
+        0
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        14.5,
+        0
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        90,
+        -62.75,
+        90
+      ],
+      "translation": [
+        1,
+        -3,
+        0
+      ]
+    }
+  },
+  "textures": {
+    "particle": "myths_of_the_sea:item/bunyip_claw"
+  }
+}
