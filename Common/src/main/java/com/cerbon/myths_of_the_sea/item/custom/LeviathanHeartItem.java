@@ -21,10 +21,11 @@ public class LeviathanHeartItem extends Item {
 
         if (livingEntity instanceof ServerPlayer player) {
             IServerPlayerMixin playerMixin = (IServerPlayerMixin) player;
-            playerMixin.mts$increaseLeviathanHeartsEaten();
 
-            if (playerMixin.mts$getLeviathanHeartsEaten() <= 5)
+            if (playerMixin.mts$getLeviathanHeartsEaten() < 5) {
+                playerMixin.mts$increaseLeviathanHeartsEaten();
                 player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(player.getAttribute(Attributes.MAX_HEALTH).getBaseValue() + 4.0D);
+            }
         }
 
         return itemStack;
