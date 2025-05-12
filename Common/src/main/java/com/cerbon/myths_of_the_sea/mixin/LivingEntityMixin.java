@@ -17,7 +17,7 @@ public abstract class LivingEntityMixin {
     private void mtg$canAttack(LivingEntity target, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity thisEntity = (LivingEntity) (Object) this;
 
-        if (thisEntity.getMobType() == MobType.UNDEAD && target instanceof Player player && MTSUtils.isUsingFullArmorSet(MTSArmorMaterials.BONE, player))
+        if (thisEntity.getMobType() == MobType.UNDEAD && target instanceof Player player && MTSUtils.isUsingFullArmorSet(MTSArmorMaterials.BAKE_KUJIRA, player))
             cir.setReturnValue(false);
     }
 }

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "myths_of_the_sea:bone_leggings"
+        "recipe": "myths_of_the_sea:bake_kujira_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "myths_of_the_sea:bone_leggings"
+      "myths_of_the_sea:bake_kujira_chestplate"
     ]
   },
   "sends_telemetry_event": false

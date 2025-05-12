@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "myths_of_the_sea:bone_helmet"
+        "recipe": "myths_of_the_sea:bake_kujira_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "myths_of_the_sea:bone_helmet"
+      "myths_of_the_sea:bake_kujira_boots"
     ]
   },
   "sends_telemetry_event": false

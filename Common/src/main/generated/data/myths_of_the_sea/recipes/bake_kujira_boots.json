@@ -7,11 +7,11 @@
     }
   },
   "pattern": [
-    "###",
+    "# #",
     "# #"
   ],
   "result": {
-    "item": "myths_of_the_sea:bone_helmet"
+    "item": "myths_of_the_sea:bake_kujira_boots"
   },
   "show_notification": true
 }

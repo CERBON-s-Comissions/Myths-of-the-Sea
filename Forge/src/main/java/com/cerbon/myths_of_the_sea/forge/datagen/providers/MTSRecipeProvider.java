@@ -19,14 +19,14 @@ public class MTSRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BONE_ARMOR_SET.get(ArmorItem.Type.HELMET).get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BAKE_KUJIRA_ARMOR_SET.get(ArmorItem.Type.HELMET).get())
                 .pattern("###")
                 .pattern("# #")
                 .define('#', MTSItems.BAKE_KUJIRA_BONE.get())
                 .unlockedBy("has_bake_kujira_bone", has(MTSItems.BAKE_KUJIRA_BONE.get()))
                 .save(writer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BONE_ARMOR_SET.get(ArmorItem.Type.CHESTPLATE).get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BAKE_KUJIRA_ARMOR_SET.get(ArmorItem.Type.CHESTPLATE).get())
                 .pattern("# #")
                 .pattern("###")
                 .pattern("###")
@@ -34,7 +34,7 @@ public class MTSRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_bake_kujira_bone", has(MTSItems.BAKE_KUJIRA_BONE.get()))
                 .save(writer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BONE_ARMOR_SET.get(ArmorItem.Type.LEGGINGS).get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BAKE_KUJIRA_ARMOR_SET.get(ArmorItem.Type.LEGGINGS).get())
                 .pattern("###")
                 .pattern("# #")
                 .pattern("# #")
@@ -42,7 +42,7 @@ public class MTSRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_bake_kujira_bone", has(MTSItems.BAKE_KUJIRA_BONE.get()))
                 .save(writer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BONE_ARMOR_SET.get(ArmorItem.Type.BOOTS).get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, MTSItems.BAKE_KUJIRA_ARMOR_SET.get(ArmorItem.Type.BOOTS).get())
                 .pattern("# #")
                 .pattern("# #")
                 .define('#', MTSItems.BAKE_KUJIRA_BONE.get())

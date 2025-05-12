@@ -16,7 +16,7 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public enum MTSArmorMaterials implements StringRepresentable, ArmorMaterial {
-    BONE("bone", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), enumMap -> {
+    BAKE_KUJIRA("bake_kujira", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), enumMap -> {
         enumMap.put(ArmorItem.Type.BOOTS, 2);
         enumMap.put(ArmorItem.Type.CHESTPLATE, 4);
         enumMap.put(ArmorItem.Type.LEGGINGS, 5);

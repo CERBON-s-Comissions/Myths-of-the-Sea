@@ -47,7 +47,7 @@ public final class MTSItems {
             "leviathan_heart"
     );
 
-    public static final Map<ArmorItem.Type, RegistryEntry<ArmorItem>> BONE_ARMOR_SET = registerFullArmorSet(MTSArmorMaterials.BONE);
+    public static final Map<ArmorItem.Type, RegistryEntry<ArmorItem>> BAKE_KUJIRA_ARMOR_SET = registerFullArmorSet(MTSArmorMaterials.BAKE_KUJIRA);
 
     // ============== Registration methods ==============
     private static Map<ArmorItem.Type, RegistryEntry<ArmorItem>> registerFullArmorSet(ArmorMaterial material) {
