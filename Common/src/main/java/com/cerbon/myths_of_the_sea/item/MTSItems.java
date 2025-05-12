@@ -6,6 +6,7 @@ import com.cerbon.cerbons_api.api.registry.ResourcefulRegistry;
 import com.cerbon.myths_of_the_sea.MythsOfTheSea;
 import com.cerbon.myths_of_the_sea.item.custom.LeviathanHeartItem;
 import com.cerbon.myths_of_the_sea.item.custom.armor.MTSArmorMaterials;
+import com.cerbon.myths_of_the_sea.platform.Services;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.food.FoodProperties;
@@ -25,6 +26,11 @@ public final class MTSItems {
     public static final RegistryEntry<Item> BUNYIP_FANG = registerItem("bunyip_fang");
 
     public static final RegistryEntry<Item> HIPPOCAMPUS_EYE = registerItem("hippocampus_eye");
+
+    public static final RegistryEntry<Item> KRAKEN_TENTACLE = registerItem(
+            Services.PLATFORM.krakenTentacleItem(new Item.Properties()),
+            "kraken_tentacle"
+    );
 
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
             () -> new LeviathanHeartItem(new Item.Properties().food(

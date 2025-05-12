@@ -33,6 +33,8 @@ dependencies {
     modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
     implementation "com.eliotlash.mclib:mclib:20"
 
+    include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:$reach_entity_attributes")
+
     // Useful Mods
     modCompileOnlyApi "mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}"
     modRuntimeOnly "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"

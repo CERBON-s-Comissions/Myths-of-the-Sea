@@ -76,6 +76,12 @@ allprojects {
                 includeGroup("com.eliotlash.mclib")
             }
         }
+        maven {
+            url "https://maven.jamieswhiteshirt.com/libs-release"
+            content {
+                includeGroup "com.jamieswhiteshirt"
+            }
+        }
         flatDir {
             dir "libs"
         }
