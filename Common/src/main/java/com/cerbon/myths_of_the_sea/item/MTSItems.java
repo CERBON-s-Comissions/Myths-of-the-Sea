@@ -19,7 +19,10 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public final class MTSItems {
-    public static final ResourcefulRegistry<Item> ITEMS = ResourcefulRegistries.create(BuiltInRegistries.ITEM, MythsOfTheSea.MOD_ID);
+    public static final ResourcefulRegistry<Item> ITEMS = ResourcefulRegistries.create(
+            BuiltInRegistries.ITEM,
+            MythsOfTheSea.MOD_ID
+    );
 
     public static final RegistryEntry<Item> BAKE_KUJIRA_BONE = registerItem("bake_kujira_bone");
 
