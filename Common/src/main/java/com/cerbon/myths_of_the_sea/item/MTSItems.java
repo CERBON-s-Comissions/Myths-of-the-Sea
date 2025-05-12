@@ -36,7 +36,7 @@ public final class MTSItems {
     );
 
     public static final RegistryEntry<Item> BUNYIP_CLAW = registerItem(
-            Services.PLATFORM.bunyipClawItem(5.0F, -2.4F, new Item.Properties().durability(250)),
+            Services.PLATFORM.bunyipClawItem(4.0F, -2.4F, new Item.Properties().durability(250)),
             "bunyip_claw"
     );
 
