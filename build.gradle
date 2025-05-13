@@ -82,6 +82,10 @@ allprojects {
                 includeGroup "com.jamieswhiteshirt"
             }
         }
+        maven {
+            name "Illusive Soulworks maven" // Curios
+            url "https://maven.theillusivec4.top/"
+        }
         flatDir {
             dir "libs"
         }
