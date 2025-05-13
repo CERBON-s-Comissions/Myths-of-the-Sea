@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -45,7 +46,7 @@ public abstract class ServerPlayerMixin implements IServerPlayerMixin {
         AttributeInstance entityReach = self().getAttribute(Services.PLATFORM.entityReachAttribute());
         if (blockReach == null || entityReach == null) return;
 
-        boolean holdingTentacle = self().getInventory().getSelected().is(MTSItems.KRAKEN_TENTACLE.get());
+        boolean holdingTentacle = self().getInventory().getSelected().is(MTSItems.KRAKEN_TENTACLE.get()) || Services.PLATFORM.getItemFromCuriosSlot(self(), MTSItems.KRAKEN_TENTACLE.get()) != ItemStack.EMPTY;
 
         if (holdingTentacle && !mts$appliedRangeAttribute) {
             blockReach.addTransientModifier(new AttributeModifier(
