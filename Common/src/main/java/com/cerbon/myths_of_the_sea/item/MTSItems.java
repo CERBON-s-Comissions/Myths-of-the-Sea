@@ -40,6 +40,8 @@ public final class MTSItems {
             "bunyip_claw"
     );
 
+    //TODO: Add Abaia Tail
+
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
             () -> new LeviathanHeartItem(new Item.Properties().food(
                     new FoodProperties.Builder()

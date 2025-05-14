@@ -48,5 +48,7 @@ public class MTSRecipeProvider extends RecipeProvider {
                 .define('#', MTSItems.BAKE_KUJIRA_BONE.get())
                 .unlockedBy("has_bake_kujira_bone", has(MTSItems.BAKE_KUJIRA_BONE.get()))
                 .save(writer);
+
+        //TODO: Add Bunyip Claw recipe
     }
 }
