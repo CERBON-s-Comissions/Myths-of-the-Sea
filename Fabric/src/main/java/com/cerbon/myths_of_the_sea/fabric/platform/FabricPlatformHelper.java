@@ -2,6 +2,7 @@ package com.cerbon.myths_of_the_sea.fabric.platform;
 
 import com.cerbon.myths_of_the_sea.fabric.item.BunyipClawItem;
 import com.cerbon.myths_of_the_sea.fabric.item.KrakenTentacleItem;
+import com.cerbon.myths_of_the_sea.fabric.item.KrakenTentacleItemTrinkets;
 import com.cerbon.myths_of_the_sea.integration.MTSIntegrations;
 import com.cerbon.myths_of_the_sea.platform.custom.IPlatformHelper;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
@@ -20,7 +21,7 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override
     public Supplier<Item> krakenTentacleItem(Item.Properties properties) {
-        return () -> new KrakenTentacleItem(properties);
+        return MTSIntegrations.isTrinketsLoaded ? () -> new KrakenTentacleItemTrinkets(properties) : () -> new KrakenTentacleItem(properties);
     }
 
     @Override

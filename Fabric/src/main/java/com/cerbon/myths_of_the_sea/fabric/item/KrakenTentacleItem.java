@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class KrakenTentacleItem extends BaseKrakenTentacleItem {
-    private Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
+    private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
     public KrakenTentacleItem(Properties properties) {
         super(properties);
