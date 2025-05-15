@@ -38,15 +38,4 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public Attribute entityReachAttribute() {
         return ReachEntityAttributes.ATTACK_RANGE;
     }
-
-    @Override
-    public ItemStack getItemFromCuriosSlot(LivingEntity livingEntity, Item item) {
-        if (MTSIntegrations.isTrinketsLoaded) {
-            return TrinketsApi.getTrinketComponent(livingEntity).map(component -> {
-                List<Tuple<SlotReference, ItemStack>> res = component.getEquipped(itemStack -> itemStack.is(item));
-                return !res.isEmpty() ? res.get(0).getB() : ItemStack.EMPTY;
-            }).orElse(ItemStack.EMPTY);
-        }
-        return ItemStack.EMPTY;
-    }
 }

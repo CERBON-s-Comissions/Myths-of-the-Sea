@@ -35,12 +35,4 @@ public class ForgePlatformHelper implements IPlatformHelper {
     public Attribute entityReachAttribute() {
         return ForgeMod.ENTITY_REACH.get();
     }
-
-    @Override
-    public ItemStack getItemFromCuriosSlot(LivingEntity livingEntity, Item item) {
-        if (MTSIntegrations.isCuriosLoaded)
-            return CuriosApi.getCuriosHelper().findFirstCurio(livingEntity, item).map(SlotResult::stack).orElse(ItemStack.EMPTY);
-
-        return ItemStack.EMPTY;
-    }
 }
