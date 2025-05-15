@@ -31,7 +31,7 @@ public final class MTSItems {
     public static final RegistryEntry<Item> HIPPOCAMPUS_EYE = registerItem("hippocampus_eye");
 
     public static final RegistryEntry<Item> KRAKEN_TENTACLE = registerItem(
-            Services.PLATFORM.krakenTentacleItem(new Item.Properties()),
+            Services.PLATFORM.krakenTentacleItem(new Item.Properties().stacksTo(1)),
             "kraken_tentacle"
     );
 
