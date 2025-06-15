@@ -2,15 +2,10 @@ package com.cerbon.myths_of_the_sea.forge.platform;
 
 import com.cerbon.myths_of_the_sea.forge.item.BunyipClawItem;
 import com.cerbon.myths_of_the_sea.forge.item.KrakenTentacleItem;
-import com.cerbon.myths_of_the_sea.integration.MTSIntegrations;
 import com.cerbon.myths_of_the_sea.platform.custom.IPlatformHelper;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.ForgeMod;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.function.Supplier;
 

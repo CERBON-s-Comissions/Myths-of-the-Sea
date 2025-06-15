@@ -6,15 +6,9 @@ import com.cerbon.myths_of_the_sea.fabric.item.KrakenTentacleItemTrinkets;
 import com.cerbon.myths_of_the_sea.integration.MTSIntegrations;
 import com.cerbon.myths_of_the_sea.platform.custom.IPlatformHelper;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
-import dev.emi.trinkets.api.SlotReference;
-import dev.emi.trinkets.api.TrinketsApi;
-import net.minecraft.util.Tuple;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class FabricPlatformHelper implements IPlatformHelper {
