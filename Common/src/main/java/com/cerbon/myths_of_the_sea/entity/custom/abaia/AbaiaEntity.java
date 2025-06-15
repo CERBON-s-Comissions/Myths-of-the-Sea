@@ -43,6 +43,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
 
+//TODO: Find out how to fix Abaia "stop" moving when above water or next to the ground
 public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwareEntity, NeutralMob {
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(AbaiaEntity.class, EntityDataSerializers.INT);
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
