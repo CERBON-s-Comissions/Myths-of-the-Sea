@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class BunyipClawItem extends BaseBunyipClawItem {
-    private Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
+    private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
     public BunyipClawItem(float attackDamage, float attackSpeed, Properties properties) {
         super(attackDamage, attackSpeed, properties);
