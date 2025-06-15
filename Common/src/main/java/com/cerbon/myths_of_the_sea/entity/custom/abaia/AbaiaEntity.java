@@ -100,6 +100,18 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
     }
 
     @Override
+    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        this.addPersistentAngerSaveData(compound);
+    }
+
+    @Override
+    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.readPersistentAngerSaveData(this.level(), compound);
+    }
+
+    @Override
     protected @NotNull PathNavigation createNavigation(@NotNull Level level) {
         return new WaterBoundPathNavigation(this, level);
     }
