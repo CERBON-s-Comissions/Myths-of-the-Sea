@@ -26,6 +26,8 @@ loom {
         mixinConfig "${mod_id}.mixins.json"
         mixinConfig "${mod_id}-common.mixins.json"
 
+        mixinConfig("cerbons_api-common.mixins.json")
+
         runs {
             data {
                 data()

@@ -2,6 +2,7 @@ package com.cerbon.myths_of_the_sea.forge;
 
 import com.cerbon.myths_of_the_sea.MythsOfTheSea;
 import com.cerbon.myths_of_the_sea.forge.datagen.MTSDatagen;
+import com.cerbon.myths_of_the_sea.forge.entity.MTSEntitiesForge;
 import com.cerbon.myths_of_the_sea.forge.item.KrakenTentacleItem;
 import com.cerbon.myths_of_the_sea.forge.recipe.brewing.BrewingRecipes;
 import com.cerbon.myths_of_the_sea.integration.MTSIntegrations;
@@ -20,6 +21,10 @@ public class MythsOfTheSeaForge {
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         modEventBus.addListener(BrewingRecipes::register);
+
+        modEventBus.addListener(MTSEntitiesForge::registerEntityRenderers);
+        modEventBus.addListener(MTSEntitiesForge::registerEntityAttributes);
+
         modEventBus.addListener(MTSDatagen::onGatherData);
 
         if (MTSIntegrations.isCuriosLoaded)
