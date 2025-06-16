@@ -38,7 +38,8 @@ public class AbaiaMeleeAttackGoal extends MeleeAttackGoal {
                             this.mob.doHurtTarget(enemy);
                         }
                     },
-                    15
+                    15,
+                    this.mob::isDeadOrDying
             ));
         }
     }
