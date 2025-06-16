@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "minecraft:warm_ocean",
+  "spawners": {
+    "type": "myths_of_the_sea:abaia",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 25
+  }
+}

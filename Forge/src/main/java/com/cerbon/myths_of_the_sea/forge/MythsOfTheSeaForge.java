@@ -28,6 +28,7 @@ public class MythsOfTheSeaForge {
 
         modEventBus.addListener(MTSEntitiesForge::registerEntityRenderers);
         modEventBus.addListener(MTSEntitiesForge::registerEntityAttributes);
+        modEventBus.addListener(MTSEntitiesForge::registerSpawnPlacements);
 
         modEventBus.addListener(MTSDatagen::onGatherData);
 

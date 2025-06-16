@@ -1,5 +1,6 @@
 package com.cerbon.myths_of_the_sea.forge.datagen;
 
+import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSDatapackEntriesProvider;
 import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSItemModelProvider;
 import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSLanguageProvider;
 import com.cerbon.myths_of_the_sea.forge.datagen.providers.MTSRecipeProvider;
@@ -23,5 +24,6 @@ public class MTSDatagen {
         generator.addProvider(event.includeClient(), new MTSLanguageProvider(packOutput));
 
         generator.addProvider(event.includeServer(), new MTSRecipeProvider(packOutput));
+        generator.addProvider(event.includeServer(), new MTSDatapackEntriesProvider(packOutput, lookupProvider));
     }
 }
