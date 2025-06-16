@@ -14,6 +14,12 @@ public class MTSSounds {
             MythsOfTheSea.MOD_ID
     );
 
+    public static RegistryEntry<SoundEvent> ABAIA_IDLE = register("abaia_idle");
+    public static RegistryEntry<SoundEvent> ABAIA_MOVEMENT = register("abaia_movement");
+    public static RegistryEntry<SoundEvent> ABAIA_DAMAGE = register("abaia_damage");
+    public static RegistryEntry<SoundEvent> ABAIA_ATTACK = register("abaia_attack");
+    public static RegistryEntry<SoundEvent> ABAIA_DEATH = register("abaia_death");
+
     private static RegistryEntry<SoundEvent> register(String name) {
         ResourceLocation id = new ResourceLocation(MythsOfTheSea.MOD_ID, name);
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
