@@ -4,15 +4,20 @@ import com.cerbon.cerbons_api.api.registry.RegistryEntry;
 import com.cerbon.cerbons_api.api.registry.ResourcefulRegistries;
 import com.cerbon.cerbons_api.api.registry.ResourcefulRegistry;
 import com.cerbon.myths_of_the_sea.MythsOfTheSea;
+import com.cerbon.myths_of_the_sea.entity.MTSEntities;
 import com.cerbon.myths_of_the_sea.item.custom.LeviathanHeartItem;
+import com.cerbon.myths_of_the_sea.item.custom.MTSSpawnEggItem;
 import com.cerbon.myths_of_the_sea.item.custom.armor.MTSArmorMaterials;
 import com.cerbon.myths_of_the_sea.platform.Services;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -56,6 +61,14 @@ public final class MTSItems {
 
     public static final Map<ArmorItem.Type, RegistryEntry<ArmorItem>> BAKE_KUJIRA_ARMOR_SET = registerFullArmorSet(MTSArmorMaterials.BAKE_KUJIRA);
 
+    // Spawn Eggs
+    public static final RegistryEntry<SpawnEggItem> ABAIA_SPAWN_EGG = registerEgg(
+            MTSEntities.ABAIA,
+            0x537269,
+            0x71948a,
+            MTSEntities.ABAIA.getId().getPath()
+    );
+
     // ============== Registration methods ==============
     private static Map<ArmorItem.Type, RegistryEntry<ArmorItem>> registerFullArmorSet(ArmorMaterial material) {
         return registerFullArmorSet(material, properties -> properties);
@@ -73,6 +86,10 @@ public final class MTSItems {
     private static RegistryEntry<ArmorItem> registerArmor(ArmorItem.Type armorType, ArmorMaterial material, UnaryOperator<Item.Properties> itemProperties) {
         String materialName = material.getName().split(":")[1];
         return registerItem(() -> new ArmorItem(material, armorType, itemProperties.apply(new Item.Properties())), materialName + "_" + armorType.getName());
+    }
+
+    public static <T extends Mob> RegistryEntry<SpawnEggItem> registerEgg(Supplier<EntityType<T>> entityType, int backgroundColor, int highlightColor, String id) {
+        return registerItem(() -> new MTSSpawnEggItem(entityType, backgroundColor, highlightColor, new Item.Properties()), id + "_spawn_egg");
     }
 
     private static RegistryEntry<Item> registerItem(String id) {
