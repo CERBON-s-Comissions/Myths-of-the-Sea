@@ -1,10 +1,13 @@
 package com.cerbon.myths_of_the_sea.forge.datagen.providers;
 
+import com.cerbon.cerbons_api.api.registry.RegistryEntry;
 import com.cerbon.myths_of_the_sea.MythsOfTheSea;
+import com.cerbon.myths_of_the_sea.entity.MTSEntities;
 import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.potion.MTSPotions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -20,21 +23,30 @@ public class MTSLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        MTSItems.ITEMS.getEntries().forEach(item -> addItemTranslation(item.get()));
+        MTSItems.ITEMS.getEntries().forEach(this::addItemTranslation);
+        MTSEntities.ENTITY_TYPES.getEntries().forEach(this::addEntityTranslation);
 
         addPotionTranslation(MTSPotions.VERY_LONG_NIGHT_VISION.get(), "Night Vision");
 
         add("itemGroup.myths_of_the_sea", "Myths of The Sea");
     }
 
-    private void addItemTranslation(Item item) {
-        String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+    private void addItemTranslation(RegistryEntry<Item> item) {
+        String path = item.getId().getPath();
+        String translation = translate(path);
+        add(item.get(), translation);
+    }
 
-        String translation = Arrays.stream(path.split("_"))
+    private void addEntityTranslation(RegistryEntry<EntityType<?>> entity) {
+        String path = entity.getId().getPath();
+        String translation = translate(path);
+        add(entity.get(), translation);
+    }
+
+    private String translate(String path) {
+        return Arrays.stream(path.split("_"))
                 .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
                 .collect(Collectors.joining(" "));
-
-        add(item, translation);
     }
 
     private void addPotionTranslation(Potion potion, String baseName) {
