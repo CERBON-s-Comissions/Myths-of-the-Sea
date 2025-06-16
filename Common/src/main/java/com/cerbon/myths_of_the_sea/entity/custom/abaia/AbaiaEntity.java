@@ -5,15 +5,21 @@ import com.cerbon.cerbons_api.api.multipart_entities.entity.EntityBounds;
 import com.cerbon.cerbons_api.api.multipart_entities.entity.MultipartAwareEntity;
 import com.cerbon.cerbons_api.api.multipart_entities.util.CompoundOrientedBox;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
+import com.cerbon.cerbons_api.api.static_utilities.SoundUtils;
 import com.cerbon.myths_of_the_sea.entity.custom.abaia.goal.AbaiaMeleeAttackGoal;
+import com.cerbon.myths_of_the_sea.sound.MTSSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -214,6 +220,45 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
     @Override
     public void startPersistentAngerTimer() {
         this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+    }
+
+    @Override
+    public boolean doHurtTarget(@NotNull Entity target) {
+        if (this.level() instanceof ServerLevel serverLevel)
+            SoundUtils.playSound(serverLevel, this.position(), MTSSounds.ABAIA_ATTACK.get(), SoundSource.HOSTILE, 3F, 6D);
+
+        return super.doHurtTarget(target);
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return MTSSounds.ABAIA_IDLE.get();
+    }
+
+    @Override
+    protected @NotNull SoundEvent getSwimSound() {
+        return MTSSounds.ABAIA_MOVEMENT.get();
+    }
+
+    @Override
+    protected void playSwimSound(float volume) {
+        float f = (float) this.getDeltaMovement().horizontalDistance();
+
+        if (f >= 0.01F)
+            super.playSwimSound(Mth.lerp(Mth.clamp(f, 0.0F, 0.5F), 0.0F, 1.2F));
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
+        return MTSSounds.ABAIA_DAMAGE.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return MTSSounds.ABAIA_DEATH.get();
     }
 
     @Override
