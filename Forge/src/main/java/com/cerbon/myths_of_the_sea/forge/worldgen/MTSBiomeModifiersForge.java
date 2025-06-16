@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
-public class MTSBiomeModifiers {
+public class MTSBiomeModifiersForge {
     public static final ResourceKey<BiomeModifier> SPAWN_ABAIA = registerKey("spawn_abaia");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
