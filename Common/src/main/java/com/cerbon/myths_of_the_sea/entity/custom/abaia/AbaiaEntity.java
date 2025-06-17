@@ -51,30 +51,25 @@ import java.util.UUID;
 
 //TODO: Find out how to fix Abaia "stop" moving when above water or next to the ground
 public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwareEntity, NeutralMob {
-    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(AbaiaEntity.class, EntityDataSerializers.INT);
-    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-    @Nullable private UUID persistentAngerTarget;
-
     private final AnimatableInstanceCache animatableInstanceCache = GeckoLibUtil.createInstanceCache(this);
 
     private final AbaiaHitboxes hitboxManager = new AbaiaHitboxes(this);
 
-    protected static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
-    protected static final RawAnimation MOVE_ANIM = RawAnimation.begin().thenLoop("move");
-    protected static final RawAnimation ATTACK_ANIM = RawAnimation.begin().then("attack", Animation.LoopType.PLAY_ONCE);
-    protected static final RawAnimation DIE_ANIM = RawAnimation.begin().thenPlayAndHold("die");
+    @Nullable
+    private UUID persistentAngerTarget;
+    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(AbaiaEntity.class, EntityDataSerializers.INT);
+    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 
-    public static final int ATTACK_ANIM_TIME = 21;
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation MOVE_ANIM = RawAnimation.begin().thenLoop("move");
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().then("attack", Animation.LoopType.PLAY_ONCE);
+    private static final RawAnimation DIE_ANIM = RawAnimation.begin().thenPlayAndHold("die");
+    private static final int ATTACK_ANIM_TIME = 21;
 
     public AbaiaEntity(EntityType<? extends WaterAnimal> entityType, Level level) {
         super(entityType, level);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
-    }
-
-    @Override
-    protected @NotNull BodyRotationControl createBodyControl() {
-        return new AbaiaBodyRotationControl(this);
     }
 
     public static AttributeSupplier createAttributes() {
@@ -122,6 +117,11 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
     @Override
     protected @NotNull PathNavigation createNavigation(@NotNull Level level) {
         return new WaterBoundPathNavigation(this, level);
+    }
+
+    @Override
+    protected @NotNull BodyRotationControl createBodyControl() {
+        return new AbaiaBodyRotationControl(this);
     }
 
     @Nullable
