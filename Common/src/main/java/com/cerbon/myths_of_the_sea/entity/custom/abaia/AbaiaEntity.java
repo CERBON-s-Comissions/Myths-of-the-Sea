@@ -83,6 +83,7 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
                 .add(Attributes.ATTACK_DAMAGE, 2.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 2.0D)
                 .add(Attributes.MOVEMENT_SPEED, 1.0F)
+                .add(Attributes.FOLLOW_RANGE, 48F)
                 .build();
     }
 
