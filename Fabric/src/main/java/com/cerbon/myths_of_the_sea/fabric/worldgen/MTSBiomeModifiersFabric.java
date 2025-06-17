@@ -17,5 +17,14 @@ public class MTSBiomeModifiersFabric {
                 1,
                 2
         );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Biomes.OCEAN),
+                MobCategory.WATER_CREATURE,
+                MTSEntities.BAKE_KUJIRA.get(),
+                3,
+                1,
+                1
+        );
     }
 }

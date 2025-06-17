@@ -1,5 +1,6 @@
 {
   "entity.myths_of_the_sea.abaia": "Abaia",
+  "entity.myths_of_the_sea.bake_kujira": "Bake Kujira",
   "item.minecraft.lingering_potion.effect.very_long_night_vision": "Lingering Potion of Night Vision",
   "item.minecraft.potion.effect.very_long_night_vision": "Potion of Night Vision",
   "item.minecraft.splash_potion.effect.very_long_night_vision": "Splash Potion of Night Vision",
@@ -9,6 +10,7 @@
   "item.myths_of_the_sea.bake_kujira_chestplate": "Bake Kujira Chestplate",
   "item.myths_of_the_sea.bake_kujira_helmet": "Bake Kujira Helmet",
   "item.myths_of_the_sea.bake_kujira_leggings": "Bake Kujira Leggings",
+  "item.myths_of_the_sea.bake_kujira_spawn_egg": "Bake Kujira Spawn Egg",
   "item.myths_of_the_sea.bunyip_claw": "Bunyip Claw",
   "item.myths_of_the_sea.bunyip_fang": "Bunyip Fang",
   "item.myths_of_the_sea.hippocampus_eye": "Hippocampus Eye",

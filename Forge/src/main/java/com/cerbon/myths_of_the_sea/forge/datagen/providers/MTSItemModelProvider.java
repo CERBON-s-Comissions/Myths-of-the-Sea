@@ -25,6 +25,7 @@ public class MTSItemModelProvider extends ItemModelProvider {
         basicItem(MTSItems.LEVIATHAN_HEART.get());
 
         eggItem(MTSItems.ABAIA_SPAWN_EGG.get());
+        eggItem(MTSItems.BAKE_KUJIRA_SPAWN_EGG.get());
 
         MTSItems.BAKE_KUJIRA_ARMOR_SET.values().forEach(armorItem -> basicItem(armorItem.get()));
     }

@@ -17,6 +17,7 @@ import java.util.List;
 
 public class MTSBiomeModifiersForge {
     public static final ResourceKey<BiomeModifier> SPAWN_ABAIA = registerKey("spawn_abaia");
+    public static final ResourceKey<BiomeModifier> SPAWN_BAKE_KUJIRA = registerKey("spawn_bake_kujira");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var biomes = context.lookup(Registries.BIOME);
@@ -24,6 +25,11 @@ public class MTSBiomeModifiersForge {
         context.register(SPAWN_ABAIA, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.WARM_OCEAN)),
                 List.of(new MobSpawnSettings.SpawnerData(MTSEntities.ABAIA.get(), 25, 1, 2))
+        ));
+
+        context.register(SPAWN_BAKE_KUJIRA, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.OCEAN)),
+                List.of(new MobSpawnSettings.SpawnerData(MTSEntities.BAKE_KUJIRA.get(), 3, 1, 1))
         ));
     }
 

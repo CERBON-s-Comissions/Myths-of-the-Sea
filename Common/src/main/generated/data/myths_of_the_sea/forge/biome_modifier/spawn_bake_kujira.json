@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "minecraft:ocean",
+  "spawners": {
+    "type": "myths_of_the_sea:bake_kujira",
+    "maxCount": 1,
+    "minCount": 1,
+    "weight": 3
+  }
+}

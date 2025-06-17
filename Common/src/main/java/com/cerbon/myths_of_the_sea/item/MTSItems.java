@@ -69,6 +69,13 @@ public final class MTSItems {
             MTSEntities.ABAIA.getId().getPath()
     );
 
+    public static final RegistryEntry<SpawnEggItem> BAKE_KUJIRA_SPAWN_EGG = registerEgg(
+            MTSEntities.BAKE_KUJIRA,
+            0xeae0ca,
+            0xf4eddf,
+            MTSEntities.BAKE_KUJIRA.getId().getPath()
+    );
+
     // ============== Registration methods ==============
     private static Map<ArmorItem.Type, RegistryEntry<ArmorItem>> registerFullArmorSet(ArmorMaterial material) {
         return registerFullArmorSet(material, properties -> properties);
