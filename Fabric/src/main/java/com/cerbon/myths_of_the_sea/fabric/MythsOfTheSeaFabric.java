@@ -17,7 +17,8 @@ public class MythsOfTheSeaFabric implements ModInitializer, ClientModInitializer
         BrewingRecipes.register();
         MTSSpawnEggItem.registerSpawnEggsDispenserBehaviour();
         MTSEntitiesFabric.registerEntityAttributes();
-        MTSBiomeModifiersFabric.addEntitySpawns();
+        MTSEntitiesFabric.registerSpawnPlacements();
+        MTSBiomeModifiersFabric.registerEntitySpawns();
     }
 
     @Override
