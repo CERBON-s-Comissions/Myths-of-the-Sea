@@ -21,7 +21,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 //TODO: Find how to do a dual wield
 public abstract class BaseBunyipClawItem extends Item implements GeoItem {
-    private AnimatableInstanceCache animatableCache = GeckoLibUtil.createInstanceCache(this);
+    private final AnimatableInstanceCache animatableCache = GeckoLibUtil.createInstanceCache(this);
 
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
