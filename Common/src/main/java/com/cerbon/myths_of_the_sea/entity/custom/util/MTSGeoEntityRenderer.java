@@ -10,7 +10,7 @@ import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-public class MTSGeoEntityRenderer <T extends Mob & GeoAnimatable> extends GeoEntityRenderer<T> {
+public class MTSGeoEntityRenderer<T extends Mob & GeoAnimatable> extends GeoEntityRenderer<T> {
 
     public MTSGeoEntityRenderer(EntityRendererProvider.Context renderManager, GeoModel<T> model) {
         super(renderManager, model);
