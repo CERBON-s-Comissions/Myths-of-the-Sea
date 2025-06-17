@@ -37,5 +37,49 @@
       "myths_of_the_sea:abaia_movement1"
     ],
     "subtitle": "subtitles.myths_of_the_sea.abaia_movement"
+  },
+  "bake_kujira_attack": {
+    "sounds": [
+      "myths_of_the_sea:bake_kujira_attack1",
+      "myths_of_the_sea:bake_kujira_attack2",
+      "myths_of_the_sea:bake_kujira_attack3",
+      "myths_of_the_sea:bake_kujira_attack4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bake_kujira_attack"
+  },
+  "bake_kujira_damage": {
+    "sounds": [
+      "myths_of_the_sea:bake_kujira_damage1",
+      "myths_of_the_sea:bake_kujira_damage2",
+      "myths_of_the_sea:bake_kujira_damage3",
+      "myths_of_the_sea:bake_kujira_damage4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bake_kujira_damage"
+  },
+  "bake_kujira_death": {
+    "sounds": [
+      "myths_of_the_sea:bake_kujira_death1",
+      "myths_of_the_sea:bake_kujira_death2",
+      "myths_of_the_sea:bake_kujira_death3",
+      "myths_of_the_sea:bake_kujira_death4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bake_kujira_death"
+  },
+  "bake_kujira_idle": {
+    "sounds": [
+      "myths_of_the_sea:bake_kujira_idle1",
+      "myths_of_the_sea:bake_kujira_idle2",
+      "myths_of_the_sea:bake_kujira_idle3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bake_kujira_idle"
+  },
+  "bake_kujira_movement": {
+    "sounds": [
+      "myths_of_the_sea:bake_kujira_movement1",
+      "myths_of_the_sea:bake_kujira_movement2",
+      "myths_of_the_sea:bake_kujira_movement3",
+      "myths_of_the_sea:bake_kujira_movement4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bake_kujira_movement"
   }
 }

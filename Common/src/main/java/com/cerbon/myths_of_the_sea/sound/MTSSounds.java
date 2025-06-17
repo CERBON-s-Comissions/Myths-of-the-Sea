@@ -20,6 +20,12 @@ public class MTSSounds {
     public static RegistryEntry<SoundEvent> ABAIA_ATTACK = register("abaia_attack");
     public static RegistryEntry<SoundEvent> ABAIA_DEATH = register("abaia_death");
 
+    public static RegistryEntry<SoundEvent> BAKE_KUJIRA_IDLE = register("bake_kujira_idle");
+    public static RegistryEntry<SoundEvent> BAKE_KUJIRA_MOVEMENT = register("bake_kujira_movement");
+    public static RegistryEntry<SoundEvent> BAKE_KUJIRA_DAMAGE = register("bake_kujira_damage");
+    public static RegistryEntry<SoundEvent> BAKE_KUJIRA_ATTACK = register("bake_kujira_attack");
+    public static RegistryEntry<SoundEvent> BAKE_KUJIRA_DEATH = register("bake_kujira_death");
+
     private static RegistryEntry<SoundEvent> register(String name) {
         ResourceLocation id = new ResourceLocation(MythsOfTheSea.MOD_ID, name);
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
