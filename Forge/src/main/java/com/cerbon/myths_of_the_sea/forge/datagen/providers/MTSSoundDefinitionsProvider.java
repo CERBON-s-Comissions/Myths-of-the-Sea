@@ -28,6 +28,12 @@ public class MTSSoundDefinitionsProvider extends SoundDefinitionsProvider {
         addSound(MTSSounds.BAKE_KUJIRA_DAMAGE, 4);
         addSound(MTSSounds.BAKE_KUJIRA_ATTACK, 4);
         addSound(MTSSounds.BAKE_KUJIRA_DEATH, 4);
+
+        addSound(MTSSounds.BUNYIP_IDLE, 4);
+        addSound(MTSSounds.BUNYIP_MOVEMENT, 5);
+        addSound(MTSSounds.BUNYIP_DAMAGE, 3);
+        addSound(MTSSounds.BUNYIP_ATTACK, 5);
+        addSound(MTSSounds.BUNYIP_DEATH, 3);
     }
 
     private void addSound(RegistryEntry<SoundEvent> sound, int soundVariationAmount) {

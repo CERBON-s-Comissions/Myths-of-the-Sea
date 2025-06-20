@@ -81,5 +81,50 @@
       "myths_of_the_sea:bake_kujira_movement4"
     ],
     "subtitle": "subtitles.myths_of_the_sea.bake_kujira_movement"
+  },
+  "bunyip_attack": {
+    "sounds": [
+      "myths_of_the_sea:bunyip_attack1",
+      "myths_of_the_sea:bunyip_attack2",
+      "myths_of_the_sea:bunyip_attack3",
+      "myths_of_the_sea:bunyip_attack4",
+      "myths_of_the_sea:bunyip_attack5"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bunyip_attack"
+  },
+  "bunyip_damage": {
+    "sounds": [
+      "myths_of_the_sea:bunyip_damage1",
+      "myths_of_the_sea:bunyip_damage2",
+      "myths_of_the_sea:bunyip_damage3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bunyip_damage"
+  },
+  "bunyip_death": {
+    "sounds": [
+      "myths_of_the_sea:bunyip_death1",
+      "myths_of_the_sea:bunyip_death2",
+      "myths_of_the_sea:bunyip_death3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bunyip_death"
+  },
+  "bunyip_idle": {
+    "sounds": [
+      "myths_of_the_sea:bunyip_idle1",
+      "myths_of_the_sea:bunyip_idle2",
+      "myths_of_the_sea:bunyip_idle3",
+      "myths_of_the_sea:bunyip_idle4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bunyip_idle"
+  },
+  "bunyip_movement": {
+    "sounds": [
+      "myths_of_the_sea:bunyip_movement1",
+      "myths_of_the_sea:bunyip_movement2",
+      "myths_of_the_sea:bunyip_movement3",
+      "myths_of_the_sea:bunyip_movement4",
+      "myths_of_the_sea:bunyip_movement5"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bunyip_movement"
   }
 }

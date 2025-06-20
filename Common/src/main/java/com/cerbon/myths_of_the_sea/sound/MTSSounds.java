@@ -26,6 +26,12 @@ public class MTSSounds {
     public static RegistryEntry<SoundEvent> BAKE_KUJIRA_ATTACK = register("bake_kujira_attack");
     public static RegistryEntry<SoundEvent> BAKE_KUJIRA_DEATH = register("bake_kujira_death");
 
+    public static RegistryEntry<SoundEvent> BUNYIP_IDLE = register("bunyip_idle");
+    public static RegistryEntry<SoundEvent> BUNYIP_MOVEMENT = register("bunyip_movement");
+    public static RegistryEntry<SoundEvent> BUNYIP_DAMAGE = register("bunyip_damage");
+    public static RegistryEntry<SoundEvent> BUNYIP_ATTACK = register("bunyip_attack");
+    public static RegistryEntry<SoundEvent> BUNYIP_DEATH = register("bunyip_death");
+
     private static RegistryEntry<SoundEvent> register(String name) {
         ResourceLocation id = new ResourceLocation(MythsOfTheSea.MOD_ID, name);
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(id));

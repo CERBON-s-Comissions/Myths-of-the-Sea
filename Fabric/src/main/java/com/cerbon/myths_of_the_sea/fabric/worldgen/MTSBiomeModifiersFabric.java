@@ -26,5 +26,14 @@ public class MTSBiomeModifiersFabric {
                 1,
                 1
         );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Biomes.SWAMP, Biomes.MANGROVE_SWAMP),
+                MobCategory.MONSTER,
+                MTSEntities.BUNYIP.get(),
+                4,
+                3,
+                4
+        );
     }
 }

@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp"
+  ],
+  "spawners": {
+    "type": "myths_of_the_sea:bunyip",
+    "maxCount": 4,
+    "minCount": 3,
+    "weight": 4
+  }
+}

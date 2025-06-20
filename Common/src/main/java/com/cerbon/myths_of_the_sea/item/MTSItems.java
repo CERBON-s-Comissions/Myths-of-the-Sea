@@ -76,6 +76,13 @@ public final class MTSItems {
             MTSEntities.BAKE_KUJIRA.getId().getPath()
     );
 
+    public static final RegistryEntry<SpawnEggItem> BUNYIP_SPAWN_EGG = registerEgg(
+            MTSEntities.BUNYIP,
+            0x7e513a,
+            0x956d59,
+            MTSEntities.BUNYIP.getId().getPath()
+    );
+
     // ============== Registration methods ==============
     private static Map<ArmorItem.Type, RegistryEntry<ArmorItem>> registerFullArmorSet(ArmorMaterial material) {
         return registerFullArmorSet(material, properties -> properties);
