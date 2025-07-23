@@ -10,17 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 
 public class ExtraReachNearestAttackGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-    public ExtraReachNearestAttackGoal(Mob mob, Class<T> targetType, boolean mustSee) {
-        super(mob, targetType, mustSee);
-    }
-
-    public ExtraReachNearestAttackGoal(Mob mob, Class<T> targetType, boolean mustSee, Predicate<LivingEntity> targetPredicate) {
-        super(mob, targetType, mustSee, targetPredicate);
-    }
-
-    public ExtraReachNearestAttackGoal(Mob mob, Class<T> targetType, boolean mustSee, boolean mustReach) {
-        super(mob, targetType, mustSee, mustReach);
-    }
 
     public ExtraReachNearestAttackGoal(Mob mob, Class<T> targetType, int randomInterval, boolean mustSee, boolean mustReach, @Nullable Predicate<LivingEntity> targetPredicate) {
         super(mob, targetType, randomInterval, mustSee, mustReach, targetPredicate);

@@ -13,11 +13,6 @@ public class LeviathanEntityModel extends DefaultedEntityGeoModel<LeviathanEntit
 
     @Override
     public void setCustomAnimations(LeviathanEntity leviathan, long instanceId, AnimationState<LeviathanEntity> animationState) {
-        CoreGeoBone head = getAnimationProcessor().getBone("head");
-        CoreGeoBone fullBody = getAnimationProcessor().getBone("fullBody");
-        CoreGeoBone serpentBody = getAnimationProcessor().getBone("serpentBody");
-
-
         CoreGeoBone[] body = {
                 getAnimationProcessor().getBone("body1"),
                 getAnimationProcessor().getBone("body2"),

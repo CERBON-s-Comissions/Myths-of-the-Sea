@@ -62,7 +62,6 @@ public class KrakenEntity extends WaterAnimal implements GeoEntity, MultipartAwa
 
     private static final RawAnimation SIMPLE_ATTACK_ANIM = RawAnimation.begin().thenPlay("attack_simple");
     private static final RawAnimation GRAB_ATTACK_ANIM = RawAnimation.begin().thenPlay("attack_grab");
-    private static final RawAnimation HOLD_ATTACK_ANIM = RawAnimation.begin().then("attack_hold", Animation.LoopType.PLAY_ONCE);
     private static final RawAnimation MOVE_GROUND = RawAnimation.begin().then("move_ground", Animation.LoopType.PLAY_ONCE);
     private static final RawAnimation IDLE_GROUND = RawAnimation.begin().then("idle_ground", Animation.LoopType.PLAY_ONCE);
 

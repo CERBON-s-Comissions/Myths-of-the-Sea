@@ -4,7 +4,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animation.Animation;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
@@ -12,7 +11,6 @@ import software.bernie.geckolib.core.object.PlayState;
 public class GeoControllersUtil {
 
     public static final RawAnimation DIE_ANIM = RawAnimation.begin().thenPlayAndHold("death");
-    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().then("attack", Animation.LoopType.PLAY_ONCE);
     public static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     public static final RawAnimation MOVE_ANIM = RawAnimation.begin().thenLoop("move");
 

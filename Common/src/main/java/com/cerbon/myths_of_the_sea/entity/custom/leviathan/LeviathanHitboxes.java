@@ -92,24 +92,10 @@ public class LeviathanHitboxes {
 
     }
 
-    protected static void setPivotAndYaw(EntityPart part, double pivotX, double pivotY, double pivotZ, double yaw){
-        part.setPivotX(pivotX);
-        part.setPivotY(pivotY);
-        part.setPivotZ(pivotZ);
-        part.setRotation(0, yaw, 0, true);
-    }
-
     protected static void setPivotAndYawAndPitch(EntityPart part, double pivotX, double pivotY, double pivotZ, double yaw, double pitch){
         part.setPivotX(pivotX);
         part.setPivotY(pivotY);
         part.setPivotZ(pivotZ);
         part.setRotation(pitch, yaw, 0, true);
-    }
-
-    protected static void setPivotAndPitch(EntityPart part, double pivotX, double pivotY, double pivotZ, double pitch){
-        part.setPivotX(pivotX);
-        part.setPivotY(pivotY);
-        part.setPivotZ(pivotZ);
-        part.setRotation(pitch, 0, 0, true);
     }
 }

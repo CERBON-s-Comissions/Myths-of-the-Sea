@@ -59,10 +59,7 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(AbaiaEntity.class, EntityDataSerializers.INT);
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 
-    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation MOVE_ANIM = RawAnimation.begin().thenLoop("move");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().then("attack", Animation.LoopType.PLAY_ONCE);
-    private static final RawAnimation DIE_ANIM = RawAnimation.begin().thenPlayAndHold("die");
     private static final int ATTACK_ANIM_TIME = 21;
 
     public AbaiaEntity(EntityType<? extends WaterAnimal> entityType, Level level) {
