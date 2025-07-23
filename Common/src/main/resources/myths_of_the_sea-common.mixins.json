@@ -5,9 +5,14 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "LivingEntityMixin",
-    "ServerPlayerMixin"
+    "kraken.EntityMixin",
+    "ServerPlayerMixin",
+    "VillagerHostileSensorMixin"
   ],
   "client": [
+    "kraken.ClientPacketListenerMixin",
+    "kraken.LivingEntityRendererMixin",
+    "kraken.GuiMixin",
     "test.TestMixin"
   ],
   "injectors": {

@@ -36,4 +36,9 @@ public class BunyipAttackGoal extends MeleeAttackGoal {
             ));
         }
     }
+
+    @Override
+    protected double getAttackReachSqr(@NotNull LivingEntity attackTarget) {
+        return this.mob.getBbWidth() * 1.5F * this.mob.getBbWidth() * 1.5F + attackTarget.getBbWidth();
+    }
 }

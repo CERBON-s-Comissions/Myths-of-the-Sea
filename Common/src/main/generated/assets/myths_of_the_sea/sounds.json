@@ -23,6 +23,15 @@
     ],
     "subtitle": "subtitles.myths_of_the_sea.abaia_death"
   },
+  "abaia_flop": {
+    "sounds": [
+      "mob/guardian/flop1",
+      "mob/guardian/flop2",
+      "mob/guardian/flop3",
+      "mob/guardian/flop4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.abaia_flop"
+  },
   "abaia_idle": {
     "sounds": [
       "myths_of_the_sea:abaia_idle1",
@@ -64,6 +73,15 @@
       "myths_of_the_sea:bake_kujira_death4"
     ],
     "subtitle": "subtitles.myths_of_the_sea.bake_kujira_death"
+  },
+  "bake_kujira_flop": {
+    "sounds": [
+      "entity/fish/flop1",
+      "entity/fish/flop2",
+      "entity/fish/flop3",
+      "entity/fish/flop4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.bake_kujira_flop"
   },
   "bake_kujira_idle": {
     "sounds": [
@@ -126,5 +144,129 @@
       "myths_of_the_sea:bunyip_movement5"
     ],
     "subtitle": "subtitles.myths_of_the_sea.bunyip_movement"
+  },
+  "hippocampus_attack": {
+    "sounds": [
+      "myths_of_the_sea:hippocampus_attack1",
+      "myths_of_the_sea:hippocampus_attack2",
+      "myths_of_the_sea:hippocampus_attack3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.hippocampus_attack"
+  },
+  "hippocampus_damage": {
+    "sounds": [
+      "myths_of_the_sea:hippocampus_damage1",
+      "myths_of_the_sea:hippocampus_damage2",
+      "myths_of_the_sea:hippocampus_damage3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.hippocampus_damage"
+  },
+  "hippocampus_death": {
+    "sounds": [
+      "myths_of_the_sea:hippocampus_death1",
+      "myths_of_the_sea:hippocampus_death2",
+      "myths_of_the_sea:hippocampus_death3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.hippocampus_death"
+  },
+  "hippocampus_eat": {
+    "sounds": [
+      "mob/dolphin/eat1",
+      "mob/dolphin/eat2",
+      "mob/dolphin/eat3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.hippocampus_eat"
+  },
+  "hippocampus_flop": {
+    "sounds": [
+      "mob/guardian/flop1",
+      "mob/guardian/flop2",
+      "mob/guardian/flop3",
+      "mob/guardian/flop4"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.hippocampus_flop"
+  },
+  "hippocampus_idle": {
+    "sounds": [
+      "myths_of_the_sea:hippocampus_idle1",
+      "myths_of_the_sea:hippocampus_idle2",
+      "myths_of_the_sea:hippocampus_idle3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.hippocampus_idle"
+  },
+  "kraken_attack": {
+    "sounds": [
+      "myths_of_the_sea:kraken_attack1",
+      "myths_of_the_sea:kraken_attack2",
+      "myths_of_the_sea:kraken_attack3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.kraken_attack"
+  },
+  "kraken_damage": {
+    "sounds": [
+      "myths_of_the_sea:kraken_damage1",
+      "myths_of_the_sea:kraken_damage2",
+      "myths_of_the_sea:kraken_damage3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.kraken_damage"
+  },
+  "kraken_death": {
+    "sounds": [
+      "myths_of_the_sea:kraken_death1",
+      "myths_of_the_sea:kraken_death2",
+      "myths_of_the_sea:kraken_death3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.kraken_death"
+  },
+  "kraken_idle": {
+    "sounds": [
+      "myths_of_the_sea:kraken_idle1",
+      "myths_of_the_sea:kraken_idle2",
+      "myths_of_the_sea:kraken_idle3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.kraken_idle"
+  },
+  "leviathan_attack": {
+    "sounds": [
+      "myths_of_the_sea:leviathan_attack1",
+      "myths_of_the_sea:leviathan_attack2",
+      "myths_of_the_sea:leviathan_attack3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.leviathan_attack"
+  },
+  "leviathan_damage": {
+    "sounds": [
+      "myths_of_the_sea:leviathan_damage1",
+      "myths_of_the_sea:leviathan_damage2",
+      "myths_of_the_sea:leviathan_damage3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.leviathan_damage"
+  },
+  "leviathan_death": {
+    "sounds": [
+      "myths_of_the_sea:leviathan_death1",
+      "myths_of_the_sea:leviathan_death2",
+      "myths_of_the_sea:leviathan_death3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.leviathan_death"
+  },
+  "leviathan_idle": {
+    "sounds": [
+      "myths_of_the_sea:leviathan_idle1",
+      "myths_of_the_sea:leviathan_idle2",
+      "myths_of_the_sea:leviathan_idle3",
+      "myths_of_the_sea:leviathan_idle4",
+      "myths_of_the_sea:leviathan_idle5",
+      "myths_of_the_sea:leviathan_idle6"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.leviathan_idle"
+  },
+  "leviathan_movement": {
+    "sounds": [
+      "myths_of_the_sea:leviathan_movement1",
+      "myths_of_the_sea:leviathan_movement2",
+      "myths_of_the_sea:leviathan_movement3"
+    ],
+    "subtitle": "subtitles.myths_of_the_sea.leviathan_movement"
   }
 }

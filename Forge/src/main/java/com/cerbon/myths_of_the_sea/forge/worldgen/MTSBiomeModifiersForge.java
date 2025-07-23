@@ -19,6 +19,9 @@ public class MTSBiomeModifiersForge {
     public static final ResourceKey<BiomeModifier> SPAWN_ABAIA = registerKey("spawn_abaia");
     public static final ResourceKey<BiomeModifier> SPAWN_BAKE_KUJIRA = registerKey("spawn_bake_kujira");
     public static final ResourceKey<BiomeModifier> SPAWN_BUNYIP = registerKey("spawn_bunyip");
+    public static final ResourceKey<BiomeModifier> SPAWN_LEVIATHAN = registerKey("spawn_leviathan");
+    public static final ResourceKey<BiomeModifier> SPAWN_HIPPOCAMPUS = registerKey("spawn_hippocampus");
+    public static final ResourceKey<BiomeModifier> SPAWN_KRAKEN = registerKey("spawn_kraken");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var biomes = context.lookup(Registries.BIOME);
@@ -36,6 +39,21 @@ public class MTSBiomeModifiersForge {
         context.register(SPAWN_BUNYIP, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.SWAMP), biomes.getOrThrow(Biomes.MANGROVE_SWAMP)),
                 List.of(new MobSpawnSettings.SpawnerData(MTSEntities.BUNYIP.get(), 4, 3, 4))
+        ));
+
+        context.register(SPAWN_HIPPOCAMPUS, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.WARM_OCEAN)),
+                List.of(new MobSpawnSettings.SpawnerData(MTSEntities.HIPPOCAMPUS.get(), 12, 2, 4))
+        ));
+
+        context.register(SPAWN_LEVIATHAN, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.COLD_OCEAN), biomes.getOrThrow(Biomes.DEEP_COLD_OCEAN)),
+                List.of(new MobSpawnSettings.SpawnerData(MTSEntities.LEVIATHAN.get(), 2, 1, 1))
+        ));
+
+        context.register(SPAWN_KRAKEN, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.DEEP_OCEAN), biomes.getOrThrow(Biomes.DEEP_COLD_OCEAN), biomes.getOrThrow(Biomes.DEEP_LUKEWARM_OCEAN)),
+                List.of(new MobSpawnSettings.SpawnerData(MTSEntities.KRAKEN.get(), 1, 1, 1))
         ));
     }
 

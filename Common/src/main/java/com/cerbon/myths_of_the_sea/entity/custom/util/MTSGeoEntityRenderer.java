@@ -26,8 +26,10 @@ public class MTSGeoEntityRenderer<T extends Mob & GeoAnimatable> extends GeoEnti
     }
 
     @Override
-    public int getPackedOverlay(T animatable, float u, float partialTick) {
-        return animatable != null && animatable.isDeadOrDying() ? OverlayTexture.NO_OVERLAY : super.getPackedOverlay(animatable, u, partialTick);
+    public int getPackedOverlay(T entity, float u, float partialTick) {
+        //To put the overlay even during the dying animation
+        return OverlayTexture.pack(OverlayTexture.u(u),
+                OverlayTexture.v(entity.hurtTime > 0 || entity.deathTime > 0 || entity.getHealth() <= 0));
     }
 
     @Override
