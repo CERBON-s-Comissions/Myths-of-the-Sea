@@ -19,7 +19,7 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-//TODO: Find how to do a dual wield
+//TODO: Add more damage when dualwield??
 public abstract class BaseBunyipClawItem extends Item implements GeoItem {
     private final AnimatableInstanceCache animatableCache = GeckoLibUtil.createInstanceCache(this);
 

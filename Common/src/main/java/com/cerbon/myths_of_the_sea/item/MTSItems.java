@@ -36,12 +36,13 @@ public final class MTSItems {
 
     public static final TagKey<Item> HIPPOCAMPUS_FOOD_MATING = bind("hippocampus_food_mating");
 
-
     public static final RegistryEntry<Item> BAKE_KUJIRA_BONE = registerItem("bake_kujira_bone");
 
     public static final RegistryEntry<Item> BUNYIP_FANG = registerItem("bunyip_fang");
 
     public static final RegistryEntry<Item> HIPPOCAMPUS_EYE = registerItem("hippocampus_eye");
+
+    public static final RegistryEntry<Item> ABAIA_FIN = registerItem("abaia_fin");
 
     public static final RegistryEntry<Item> KRAKEN_TENTACLE = registerItem(
             Services.PLATFORM.krakenTentacleItem(new Item.Properties().stacksTo(1)),
@@ -53,7 +54,10 @@ public final class MTSItems {
             "bunyip_claw"
     );
 
-    //TODO: Add Abaia Tail
+    public static final RegistryEntry<Item> ABAIA_TAIL_BOOTS = registerItem(
+            Services.PLATFORM.abaiaTailItem(new Item.Properties().durability(250)),
+            "abaia_tail_boots"
+    );
 
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
             () -> new LeviathanHeartItem(new Item.Properties().food(

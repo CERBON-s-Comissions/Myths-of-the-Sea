@@ -2,6 +2,7 @@ package com.cerbon.myths_of_the_sea;
 
 import com.cerbon.myths_of_the_sea.creative_tab.MTSCreativeModeTabs;
 import com.cerbon.myths_of_the_sea.entity.MTSEntities;
+import com.cerbon.myths_of_the_sea.entity.MTSEntityAttributes;
 import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.potion.MTSPotions;
 import com.cerbon.myths_of_the_sea.sound.MTSSounds;
@@ -16,6 +17,8 @@ public class MythsOfTheSea {
 	public static final Logger LOGGER = LogUtils.getLogger();
 
 	public static void init() {
+		MTSEntityAttributes.register();
+
 		MTSItems.register();
 		MTSCreativeModeTabs.register();
 

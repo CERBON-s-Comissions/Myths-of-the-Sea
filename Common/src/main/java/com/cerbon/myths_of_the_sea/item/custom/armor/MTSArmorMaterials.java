@@ -9,6 +9,7 @@ import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +22,14 @@ public enum MTSArmorMaterials implements StringRepresentable, ArmorMaterial {
         enumMap.put(ArmorItem.Type.CHESTPLATE, 4);
         enumMap.put(ArmorItem.Type.LEGGINGS, 5);
         enumMap.put(ArmorItem.Type.HELMET, 2);
-    }), 12, SoundEvents.SKELETON_STEP, 0.0f, 0.0f, () -> Ingredient.of(MTSItems.BAKE_KUJIRA_BONE.get()));
+    }), 12, SoundEvents.SKELETON_STEP, 0.0f, 0.0f, () -> Ingredient.of(MTSItems.BAKE_KUJIRA_BONE.get())),
+
+    ABAIA("abaia", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), enumMap -> {
+        enumMap.put(ArmorItem.Type.BOOTS, 2);
+        enumMap.put(ArmorItem.Type.CHESTPLATE, 4);
+        enumMap.put(ArmorItem.Type.LEGGINGS, 5);
+        enumMap.put(ArmorItem.Type.HELMET, 2);
+    }), 12, SoundEvents.GUARDIAN_FLOP, 0.0f, 0.0f, () -> Ingredient.of(Items.COD));
 
     //public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bunyip_fang": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "myths_of_the_sea:bunyip_fang"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "myths_of_the_sea:bunyip_claw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_bunyip_fang",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "myths_of_the_sea:bunyip_claw"
+    ]
+  },
+  "sends_telemetry_event": false
+}

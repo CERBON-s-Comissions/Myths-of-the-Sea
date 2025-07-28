@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "myths_of_the_sea:bunyip_fang"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "LLL",
+    " L "
+  ],
+  "result": {
+    "item": "myths_of_the_sea:bunyip_claw"
+  },
+  "show_notification": true
+}

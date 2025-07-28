@@ -40,10 +40,10 @@ public class MythsOfTheSeaForge {
 
         forgeEventBus.addListener(MythsOfTheSeaForge::customizeOverlay);
 
-        if (MTSIntegrations.isCuriosLoaded)
+        if (MTSIntegrations.isCuriosLoaded){
             forgeEventBus.addListener(KrakenTentacleItem::registerCuriosAttributes);
+        }
     }
-
     /**
      * Disables the mount health when riding a kraken, it works similar to {@link GuiMixin} but for Forge
      */

@@ -19,6 +19,9 @@ public class MTSItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(MTSItems.ABAIA_FIN.get());
+        basicItem(MTSItems.ABAIA_TAIL_BOOTS.get());
+
         basicItem(MTSItems.BAKE_KUJIRA_BONE.get());
         basicItem(MTSItems.BUNYIP_FANG.get());
         basicItem(MTSItems.HIPPOCAMPUS_EYE.get());

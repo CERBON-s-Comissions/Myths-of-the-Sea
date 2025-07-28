@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "F": {
+      "item": "myths_of_the_sea:abaia_fin"
+    }
+  },
+  "pattern": [
+    "# #",
+    "F F"
+  ],
+  "result": {
+    "item": "myths_of_the_sea:abaia_tail_boots"
+  },
+  "show_notification": true
+}

@@ -4,6 +4,8 @@ import com.cerbon.cerbons_api.api.general.event.TimedEvent;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
 import com.cerbon.myths_of_the_sea.entity.MTSEntities;
 import com.cerbon.myths_of_the_sea.entity.custom.hippocampus.goals.PlayWithItemsGoal;
+import com.cerbon.myths_of_the_sea.entity.custom.hippocampus.goals.TemptGoalNoMounted;
+import com.cerbon.myths_of_the_sea.entity.custom.hippocampus.goals.TemptGoalTamed;
 import com.cerbon.myths_of_the_sea.util.GeoControllersUtil;
 import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.sound.MTSSounds;
@@ -56,12 +58,9 @@ public class HippocampusEntity extends AbstractWaterHorse implements GeoEntity {
 
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0, HippocampusEntity.class));
 
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, Ingredient.of(Items.COD), false));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, Ingredient.of(Items.SALMON), false));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, Ingredient.of(Items.TROPICAL_FISH), false));
+        this.goalSelector.addGoal(3, new TemptGoalNoMounted(this, 1.25, Ingredient.of(Items.COD, Items.SALMON, Items.TROPICAL_FISH), false));
 
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, Ingredient.of(Items.COOKED_COD), false));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, Ingredient.of(Items.COOKED_SALMON), false));
+        this.goalSelector.addGoal(3, new TemptGoalTamed(this, 1.25, Ingredient.of(Items.COOKED_COD, Items.COOKED_SALMON), false));
 
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0, 10));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));

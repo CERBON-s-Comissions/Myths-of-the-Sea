@@ -32,6 +32,10 @@ public class MTSLanguageProvider extends LanguageProvider {
 
         add("itemGroup.myths_of_the_sea", "Myths of The Sea");
 
+        add("attribute.name.water_speed", "Depth Strider");
+
+        add("item.minecraft.tipped_arrow.effect.very_long_night_vision", "Arrow of Night Vision");
+
 //        MTSSounds.SOUNDS.getEntries().forEach(this::addSubtitleTranslation);
         //Subtitles
         addSubtitleTranslation(MTSSounds.ABAIA_IDLE, "Abaia groans");
@@ -73,7 +77,6 @@ public class MTSLanguageProvider extends LanguageProvider {
         addSubtitleTranslation(MTSSounds.KRAKEN_DAMAGE, "Kraken hurts");
         addSubtitleTranslation(MTSSounds.KRAKEN_MOVEMENT, "Kraken swims");
         addSubtitleTranslation(MTSSounds.KRAKEN_DEATH, "Kraken dies");
-
     }
 
     private void addItemTranslation(RegistryEntry<Item> item) {

@@ -5,14 +5,19 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "LivingEntityMixin",
-    "kraken.EntityMixin",
     "ServerPlayerMixin",
-    "VillagerHostileSensorMixin"
+    "VillagerHostileSensorMixin",
+    "items.EnchantmentHelperMixin",
+    "items.LivingEntityMixinAbaia",
+    "kraken.EntityMixin"
   ],
   "client": [
+    "items.HumanoidModelMixin",
+    "items.ItemInHandRendererMixin",
     "kraken.ClientPacketListenerMixin",
-    "kraken.LivingEntityRendererMixin",
     "kraken.GuiMixin",
+    "kraken.HumanoidModelMixinKraken",
+    "kraken.LivingEntityRendererMixin",
     "test.TestMixin"
   ],
   "injectors": {

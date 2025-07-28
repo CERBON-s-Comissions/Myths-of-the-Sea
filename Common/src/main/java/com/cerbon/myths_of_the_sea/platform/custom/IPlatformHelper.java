@@ -11,6 +11,8 @@ public interface IPlatformHelper {
 
     Supplier<Item> bunyipClawItem(float attackDamage, float attackSpeed, Item.Properties properties);
 
+    Supplier<Item> abaiaTailItem(Item.Properties properties);
+
     Attribute blockReachAttribute();
 
     Attribute entityReachAttribute();

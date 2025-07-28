@@ -15,6 +15,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
@@ -31,8 +32,22 @@ public class MTSLootTableProvider implements LootTableSubProvider {
         ));
     }
 
+    //TODO: Adjust drop rates depending on client preference
     @Override
     public void generate(@NotNull BiConsumer<ResourceLocation, LootTable.Builder> output) {
+        //50% probability + 10% for each looting level
+        add(MTSEntities.ABAIA, LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(MTSItems.ABAIA_FIN.get())
+                                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                                .when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.5f, 0.1f))
+                                        )
+                        ),
+                output);
+
+
         add(MTSEntities.BAKE_KUJIRA, LootTable.lootTable()
                 .withPool(
                         LootPool.lootPool()
@@ -41,6 +56,25 @@ public class MTSLootTableProvider implements LootTableSubProvider {
                 ),
                 output);
 
+        add(MTSEntities.BUNYIP, LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(MTSItems.BUNYIP_FANG.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0f, 4.0f))))
+                        ),
+                output);
+
+        //80% probability + 10% for each looting level
+        add(MTSEntities.HIPPOCAMPUS, LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(MTSItems.HIPPOCAMPUS_EYE.get())
+                                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                                .when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.8f, 0.1f))
+                                        )
+                        ),
+                output);
 
         add(MTSEntities.LEVIATHAN, LootTable.lootTable()
                         .withPool(
