@@ -35,5 +35,32 @@ public class MTSBiomeModifiersFabric {
                 3,
                 4
         );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN),
+                MobCategory.MONSTER,
+                MTSEntities.LEVIATHAN.get(),
+                2,
+                1,
+                1
+        );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Biomes.WARM_OCEAN),
+                MobCategory.WATER_CREATURE,
+                MTSEntities.HIPPOCAMPUS.get(),
+                12,
+                2,
+                4
+        );
+
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN),
+                MobCategory.MONSTER,
+                MTSEntities.KRAKEN.get(),
+                1,
+                1,
+                1
+        );
     }
 }

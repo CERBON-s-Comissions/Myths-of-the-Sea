@@ -5,8 +5,10 @@ import com.cerbon.cerbons_api.api.multipart_entities.entity.EntityBounds;
 import com.cerbon.cerbons_api.api.multipart_entities.entity.MultipartAwareEntity;
 import com.cerbon.cerbons_api.api.multipart_entities.util.CompoundOrientedBox;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
-import com.cerbon.cerbons_api.api.static_utilities.SoundUtils;
 import com.cerbon.myths_of_the_sea.entity.custom.abaia.goal.AbaiaMeleeAttackGoal;
+import com.cerbon.myths_of_the_sea.entity.custom.util.BreachingWaterBoundPathNavigation;
+import com.cerbon.myths_of_the_sea.util.GeoControllersUtil;
+import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.sound.MTSSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -14,7 +16,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -31,9 +32,9 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
@@ -42,14 +43,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
 
-//TODO: Find out how to fix Abaia "stop" moving when above water or next to the ground
 public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwareEntity, NeutralMob {
     private final AnimatableInstanceCache animatableInstanceCache = GeckoLibUtil.createInstanceCache(this);
 
@@ -60,16 +59,18 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(AbaiaEntity.class, EntityDataSerializers.INT);
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 
-    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation MOVE_ANIM = RawAnimation.begin().thenLoop("move");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().then("attack", Animation.LoopType.PLAY_ONCE);
-    private static final RawAnimation DIE_ANIM = RawAnimation.begin().thenPlayAndHold("die");
     private static final int ATTACK_ANIM_TIME = 21;
 
     public AbaiaEntity(EntityType<? extends WaterAnimal> entityType, Level level) {
         super(entityType, level);
+        this.xpReward=10;
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
+    }
+
+    public int getExperienceReward() {
+        return this.xpReward;
     }
 
     public static AttributeSupplier createAttributes() {
@@ -84,9 +85,10 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new BreathAirGoal(this));
+//Unnecessary, doesn't breathe air like the dolphin
+//        this.goalSelector.addGoal(0, new BreathAirGoal(this));
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
-        this.goalSelector.addGoal(1, new AbaiaMeleeAttackGoal(this, 2.0F, true));
+        this.goalSelector.addGoal(1, new AbaiaMeleeAttackGoal(this, 2.0F, true, MTSSounds.ABAIA_ATTACK.get(), 15, 10));
         this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 1.0, 10));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -116,7 +118,7 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
 
     @Override
     protected @NotNull PathNavigation createNavigation(@NotNull Level level) {
-        return new WaterBoundPathNavigation(this, level);
+        return new BreachingWaterBoundPathNavigation(this, level);
     }
 
     @Override
@@ -190,6 +192,17 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
 
         if (this.isNoAi())
             this.setAirSupply(this.getMaxAirSupply());
+
+        //Make it jump out of the water like a fish
+        if (this.onGround() && !this.isInWater() && !this.isDeadOrDying()) {
+            this.setDeltaMovement(
+                    this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F, 0.5, (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F)
+            );
+            this.setYRot(this.random.nextFloat() * 360.0F);
+            this.setOnGround(false);
+            this.hasImpulse = true;
+            this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
+        }
     }
 
     @Override
@@ -223,14 +236,6 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
         this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
-    @Override
-    public boolean doHurtTarget(@NotNull Entity target) {
-        if (this.level() instanceof ServerLevel serverLevel)
-            SoundUtils.playSound(serverLevel, this.position(), MTSSounds.ABAIA_ATTACK.get(), SoundSource.HOSTILE, 3F, 6D);
-
-        return super.doHurtTarget(target);
-    }
-
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
@@ -262,6 +267,10 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
         return MTSSounds.ABAIA_DEATH.get();
     }
 
+    public SoundEvent getFlopSound(){
+        return MTSSounds.ABAIA_FLOP.get();
+    }
+
     @Override
     public EntityBounds getBounds() {
         return hitboxManager.getHitbox();
@@ -282,46 +291,30 @@ public class AbaiaEntity extends WaterAnimal implements GeoEntity, MultipartAwar
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "Attack", 5, this::attackController));
-        controllers.add(new AnimationController<>(this, "Movement", 10, this::movementController));
-        controllers.add(new AnimationController<>(this, "Die", 0, this::dieController));
-    }
+        controllers.add(new AnimationController<>(this, "Attack", 5, (state)-> {
+            if (this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
+                state.getController().forceAnimationReset();
+                state.getController().setAnimation(ATTACK_ANIM);
+                CapabilityUtils.getLevelEventScheduler(this.level()).addEvent(new TimedEvent(
+                        () -> this.swinging = false,
+                        ATTACK_ANIM_TIME
+                ));
+            }
+            return PlayState.CONTINUE;
+        }));
 
-    protected <E extends AbaiaEntity> PlayState movementController(final AnimationState<E> event) {
-        if (this.swinging)
-            return PlayState.STOP;
+        controllers.add(new AnimationController<>(this, "Movement", 10, (state) -> GeoControllersUtil.commonMoveController(state, this)));
 
-        if (!event.isMoving())
-            return event.setAndContinue(IDLE_ANIM);
-
-        else if (event.isMoving())
-            return event.setAndContinue(MOVE_ANIM);
-
-        return PlayState.STOP;
-    }
-
-    protected <E extends AbaiaEntity> PlayState dieController(final AnimationState<E> event) {
-        if (event.getAnimatable().isDeadOrDying())
-            return event.setAndContinue(DIE_ANIM);
-
-        return PlayState.STOP;
-    }
-
-    protected <E extends AbaiaEntity> PlayState attackController(final AnimationState<E> event) {
-        if (this.swinging && event.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
-            event.getController().forceAnimationReset();
-            event.getController().setAnimation(ATTACK_ANIM);
-
-            CapabilityUtils.getLevelEventScheduler(this.level()).addEvent(new TimedEvent(
-                    () -> this.swinging = false,
-                    ATTACK_ANIM_TIME
-            ));
-        }
-        return PlayState.CONTINUE;
+        controllers.add(new AnimationController<>(this, "Die", 0, state -> GeoControllersUtil.commonWaterAnimalDie(state, this)));
     }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return animatableInstanceCache;
+    }
+
+    @Override
+    public @Nullable ItemStack getPickResult() {
+        return new ItemStack(MTSItems.ABAIA_SPAWN_EGG.get());
     }
 }

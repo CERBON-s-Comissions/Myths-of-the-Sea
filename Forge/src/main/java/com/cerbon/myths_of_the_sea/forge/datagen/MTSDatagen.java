@@ -23,5 +23,11 @@ public class MTSDatagen {
 
         generator.addProvider(event.includeServer(), new MTSRecipeProvider(packOutput));
         generator.addProvider(event.includeServer(), new MTSDatapackEntriesProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), MTSLootTableProvider.create(packOutput));
+
+        MTSBlockTagProvider blockTagGenerator = generator.addProvider(event.includeServer(),
+                new MTSBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
+
+        generator.addProvider(event.includeServer(), new MTSItemTagProvider(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
     }
 }

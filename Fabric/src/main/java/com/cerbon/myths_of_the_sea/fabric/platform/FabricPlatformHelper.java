@@ -1,5 +1,6 @@
 package com.cerbon.myths_of_the_sea.fabric.platform;
 
+import com.cerbon.myths_of_the_sea.fabric.item.AbaiaTailItem;
 import com.cerbon.myths_of_the_sea.fabric.item.BunyipClawItem;
 import com.cerbon.myths_of_the_sea.fabric.item.KrakenTentacleItem;
 import com.cerbon.myths_of_the_sea.fabric.item.KrakenTentacleItemTrinkets;
@@ -21,6 +22,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
     @Override
     public Supplier<Item> bunyipClawItem(float attackDamage, float attackSpeed, Item.Properties properties) {
         return () -> new BunyipClawItem(attackDamage, attackSpeed, properties);
+    }
+
+    @Override
+    public Supplier<Item> abaiaTailItem(Item.Properties properties) {
+        return () -> new AbaiaTailItem(properties);
     }
 
     @Override

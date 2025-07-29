@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 0.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "myths_of_the_sea:bunyip_fang"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "myths_of_the_sea:entities/bunyip"
+}

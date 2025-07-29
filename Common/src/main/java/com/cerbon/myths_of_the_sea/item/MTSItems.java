@@ -11,6 +11,9 @@ import com.cerbon.myths_of_the_sea.item.custom.armor.MTSArmorMaterials;
 import com.cerbon.myths_of_the_sea.platform.Services;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
@@ -29,11 +32,17 @@ public final class MTSItems {
             MythsOfTheSea.MOD_ID
     );
 
+    public static final TagKey<Item> HIPPOCAMPUS_FOOD = bind("hippocampus_food");
+
+    public static final TagKey<Item> HIPPOCAMPUS_FOOD_MATING = bind("hippocampus_food_mating");
+
     public static final RegistryEntry<Item> BAKE_KUJIRA_BONE = registerItem("bake_kujira_bone");
 
     public static final RegistryEntry<Item> BUNYIP_FANG = registerItem("bunyip_fang");
 
     public static final RegistryEntry<Item> HIPPOCAMPUS_EYE = registerItem("hippocampus_eye");
+
+    public static final RegistryEntry<Item> ABAIA_FIN = registerItem("abaia_fin");
 
     public static final RegistryEntry<Item> KRAKEN_TENTACLE = registerItem(
             Services.PLATFORM.krakenTentacleItem(new Item.Properties().stacksTo(1)),
@@ -45,7 +54,10 @@ public final class MTSItems {
             "bunyip_claw"
     );
 
-    //TODO: Add Abaia Tail
+    public static final RegistryEntry<Item> ABAIA_TAIL_BOOTS = registerItem(
+            Services.PLATFORM.abaiaTailItem(new Item.Properties().durability(250)),
+            "abaia_tail_boots"
+    );
 
     public static final RegistryEntry<Item> LEVIATHAN_HEART = registerItem(
             () -> new LeviathanHeartItem(new Item.Properties().food(
@@ -81,6 +93,27 @@ public final class MTSItems {
             0x7e513a,
             0x956d59,
             MTSEntities.BUNYIP.getId().getPath()
+    );
+
+    public static final RegistryEntry<SpawnEggItem> LEVIATHAN_SPAWN_EGG = registerEgg(
+            MTSEntities.LEVIATHAN,
+            0x556c76,
+            0x677e87,
+            MTSEntities.LEVIATHAN.getId().getPath()
+    );
+
+    public static final RegistryEntry<SpawnEggItem> HIPPOCAMPUS_SPAWN_EGG = registerEgg(
+            MTSEntities.HIPPOCAMPUS,
+            0x3fadcd,
+            0xdfca6f,
+            MTSEntities.HIPPOCAMPUS.getId().getPath()
+    );
+
+    public static final RegistryEntry<SpawnEggItem> KRAKEN_SPAWN_EGG = registerEgg(
+            MTSEntities.KRAKEN,
+            0x5b7468,
+            0x6d8278,
+            MTSEntities.KRAKEN.getId().getPath()
     );
 
     // ============== Registration methods ==============
@@ -120,5 +153,9 @@ public final class MTSItems {
 
     public static void register() {
         ITEMS.register();
+    }
+
+    private static TagKey<Item> bind(String name) {
+        return TagKey.create(Registries.ITEM, new ResourceLocation(MythsOfTheSea.MOD_ID, name));
     }
 }

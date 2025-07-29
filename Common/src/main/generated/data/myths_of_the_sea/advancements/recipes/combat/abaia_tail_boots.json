@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_abaia_fin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "myths_of_the_sea:abaia_fin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "myths_of_the_sea:abaia_tail_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_abaia_fin",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "myths_of_the_sea:abaia_tail_boots"
+    ]
+  },
+  "sends_telemetry_event": false
+}

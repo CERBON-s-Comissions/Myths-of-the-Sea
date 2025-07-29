@@ -19,6 +19,9 @@ public class MTSItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(MTSItems.ABAIA_FIN.get());
+        basicItem(MTSItems.ABAIA_TAIL_BOOTS.get());
+
         basicItem(MTSItems.BAKE_KUJIRA_BONE.get());
         basicItem(MTSItems.BUNYIP_FANG.get());
         basicItem(MTSItems.HIPPOCAMPUS_EYE.get());
@@ -26,6 +29,10 @@ public class MTSItemModelProvider extends ItemModelProvider {
 
         eggItem(MTSItems.ABAIA_SPAWN_EGG.get());
         eggItem(MTSItems.BAKE_KUJIRA_SPAWN_EGG.get());
+        eggItem(MTSItems.BUNYIP_SPAWN_EGG.get());
+        eggItem(MTSItems.LEVIATHAN_SPAWN_EGG.get());
+        eggItem(MTSItems.HIPPOCAMPUS_SPAWN_EGG.get());
+        eggItem(MTSItems.KRAKEN_SPAWN_EGG.get());
 
         MTSItems.BAKE_KUJIRA_ARMOR_SET.values().forEach(armorItem -> basicItem(armorItem.get()));
     }

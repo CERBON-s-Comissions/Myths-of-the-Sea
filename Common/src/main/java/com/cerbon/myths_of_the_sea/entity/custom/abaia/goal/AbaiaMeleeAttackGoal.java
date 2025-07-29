@@ -5,7 +5,11 @@ import com.cerbon.cerbons_api.api.multipart_entities.entity.MultipartAwareEntity
 import com.cerbon.cerbons_api.api.multipart_entities.util.CompoundOrientedBox;
 import com.cerbon.cerbons_api.api.multipart_entities.util.OrientedBox;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
+import com.cerbon.cerbons_api.api.static_utilities.SoundUtils;
 import com.cerbon.myths_of_the_sea.util.MTSUtils;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
@@ -15,8 +19,18 @@ import org.jetbrains.annotations.NotNull;
 
 public class AbaiaMeleeAttackGoal extends MeleeAttackGoal {
 
-    public AbaiaMeleeAttackGoal(PathfinderMob pathfinderMob, double d, boolean bl) {
+    private boolean soundTriggered=false;
+
+    private final SoundEvent attackSound;
+
+    private final int attackDelay;
+    private final int soundDelay;
+
+    public AbaiaMeleeAttackGoal(PathfinderMob pathfinderMob, double d, boolean bl, SoundEvent attackSound, int attackDelay, int soundDelay) {
         super(pathfinderMob, d, bl);
+        this.attackSound=attackSound;
+        this.attackDelay=attackDelay;
+        this.soundDelay=soundDelay;
     }
 
     @Override
@@ -25,6 +39,18 @@ public class AbaiaMeleeAttackGoal extends MeleeAttackGoal {
 
         if (distToEnemySqr <= d && this.getTicksUntilNextAttack() <= 0) {
             this.mob.swing(InteractionHand.MAIN_HAND);
+
+            //Sound with better synchronization
+            if(!soundTriggered)
+                CapabilityUtils.getLevelEventScheduler(this.mob.level()).addEvent(new TimedEvent(
+                    () -> {
+                        if (this.mob.level() instanceof ServerLevel serverLevel)
+                            SoundUtils.playSound(serverLevel, this.mob.position(), attackSound, SoundSource.HOSTILE, 3F, 6D);
+                        soundTriggered=true;
+                    },
+                    soundDelay,
+                    () -> this.mob.isDeadOrDying() || this.soundTriggered || this.getTicksUntilNextAttack()>0
+                ));
 
             CapabilityUtils.getLevelEventScheduler(this.mob.level()).addEvent(new TimedEvent(
                     () -> {
@@ -37,8 +63,10 @@ public class AbaiaMeleeAttackGoal extends MeleeAttackGoal {
                             this.resetAttackCooldown();
                             this.mob.doHurtTarget(enemy);
                         }
+
+                        soundTriggered=false;
                     },
-                    15,
+                    attackDelay,
                     this.mob::isDeadOrDying
             ));
         }
@@ -61,6 +89,6 @@ public class AbaiaMeleeAttackGoal extends MeleeAttackGoal {
             definitiveMaxSize = Math.max(maxSize, definitiveMaxSize);
         }
 
-        return definitiveMaxSize * 2.0F + attackTarget.getBbWidth() + 0.5F;
+        return definitiveMaxSize * 2.35F + attackTarget.getBbWidth() + 0.5F;
     }
 }

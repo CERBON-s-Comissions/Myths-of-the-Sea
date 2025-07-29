@@ -1,0 +1,23 @@
+package com.cerbon.myths_of_the_sea.entity.custom.util;
+
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Predicate;
+
+public class ExtraReachNearestAttackGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
+
+    public ExtraReachNearestAttackGoal(Mob mob, Class<T> targetType, int randomInterval, boolean mustSee, boolean mustReach, @Nullable Predicate<LivingEntity> targetPredicate) {
+        super(mob, targetType, randomInterval, mustSee, mustReach, targetPredicate);
+    }
+
+    //To detect way better when too deep
+    @Override
+    protected @NotNull AABB getTargetSearchArea(double targetDistance) {
+        return this.mob.getBoundingBox().inflate(targetDistance, targetDistance, targetDistance);
+    }
+}
