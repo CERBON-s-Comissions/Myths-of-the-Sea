@@ -63,9 +63,7 @@ public class HippocampusEntityRenderer extends DynamicGeoEntityRenderer<Hippocam
 
     @Override
     public int getPackedOverlay(HippocampusEntity entity, float u, float partialTick) {
-        //To put the overlay even during the dying animation
-        return OverlayTexture.pack(OverlayTexture.u(u),
-                OverlayTexture.v(entity.hurtTime > 0 || entity.deathTime > 0 || entity.getHealth() <= 0));
+        return animatable != null && animatable.isDeadOrDying() ? OverlayTexture.NO_OVERLAY : super.getPackedOverlay(animatable, u, partialTick);
     }
 
     @Override

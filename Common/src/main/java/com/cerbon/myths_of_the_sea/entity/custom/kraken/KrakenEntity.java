@@ -348,7 +348,7 @@ public class KrakenEntity extends WaterAnimal implements GeoEntity, MultipartAwa
                 // Try to find water nearby
                 BlockPos waterPos = findNearestWater(this.blockPosition(), 64);
 
-                System.out.println("Init: "+waterPos);
+//                System.out.println("Init: "+waterPos);
                 if (waterPos != null && (this.level().getBlockState(waterPos.above()).isAir() || this.level().getFluidState(waterPos.above()).is(Fluids.WATER))) {
 
                     waterPos=waterPos.east(random.nextInt(0,20));
@@ -356,7 +356,7 @@ public class KrakenEntity extends WaterAnimal implements GeoEntity, MultipartAwa
                     waterPos=waterPos.south(random.nextInt(0,20));
                     waterPos=waterPos.north(random.nextInt(0,20));
 
-                    System.out.println("Final: "+waterPos);
+//                    System.out.println("Final: "+waterPos);
 
                     Vec3 direction = Vec3.atCenterOf(waterPos).subtract(this.position()).normalize();
 
