@@ -45,6 +45,7 @@ public final class MTSEntities {
             "leviathan",
             () -> EntityType.Builder.of(LeviathanEntity::new, MobCategory.MONSTER)
                     .sized(22.0f, 2.5f)
+                    .clientTrackingRange(12)
                     .build("leviathan")
     );
 
@@ -59,6 +60,7 @@ public final class MTSEntities {
             "kraken",
             () -> EntityType.Builder.of(KrakenEntity::new, MobCategory.MONSTER)
                     .sized(8.0f, 8.0f)
+                    .clientTrackingRange(10)
                     .build("kraken")
     );
 

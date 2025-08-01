@@ -9,6 +9,7 @@
     "VillagerHostileSensorMixin",
     "items.EnchantmentHelperMixin",
     "items.LivingEntityMixinAbaia",
+    "items.PlayerMixin",
     "kraken.EntityMixin"
   ],
   "client": [

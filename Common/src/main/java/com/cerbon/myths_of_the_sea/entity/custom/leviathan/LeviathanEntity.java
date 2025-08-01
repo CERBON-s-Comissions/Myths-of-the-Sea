@@ -14,6 +14,7 @@ import com.cerbon.myths_of_the_sea.util.GeoControllersUtil;
 import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.sound.MTSSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -53,6 +54,8 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.UUID;
+
 public class LeviathanEntity extends WaterAnimal implements GeoEntity, MultipartAwareEntity {
 
     private final AnimatableInstanceCache animatableInstanceCache = GeckoLibUtil.createInstanceCache(this);
@@ -84,7 +87,7 @@ public class LeviathanEntity extends WaterAnimal implements GeoEntity, Multipart
                 .add(Attributes.ATTACK_DAMAGE, 20.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
                 .add(Attributes.MOVEMENT_SPEED, 1.5F)
-                .add(Attributes.FOLLOW_RANGE, 64F)
+                .add(Attributes.FOLLOW_RANGE, 96F)
                 .build();
     }
 
@@ -122,8 +125,58 @@ public class LeviathanEntity extends WaterAnimal implements GeoEntity, Multipart
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
 
+        this.targetSelector.addGoal(0, new LeviathanNearestAttackGoal<>(this, Player.class, 10, false, false,
+                entity -> getLastPrey()!=null && entity.is(getLastPrey()) && entity.isInWater()));
         this.targetSelector.addGoal(1, new LeviathanNearestAttackGoal<>(this, Player.class, 10, false, false, Entity::isInWater));
         this.targetSelector.addGoal(2, new LeviathanNearestAttackGoal<>(this, Villager.class, 10, false, false, Entity::isInWater));
+    }
+
+    @Nullable
+    private UUID lastPreyUUID;
+    @Nullable
+    private Entity lastPrey;
+
+    public void setLastPreyUUID(@Nullable UUID lastPreyUUID) {
+        this.lastPreyUUID = lastPreyUUID;
+    }
+
+    public @Nullable UUID getLastPreyUUID() {
+        return lastPreyUUID;
+    }
+
+    public @Nullable Entity getLastPrey() {
+        return lastPrey;
+    }
+
+    public void setLastPrey(@Nullable Entity lastPrey) {
+        this.lastPrey = lastPrey;
+    }
+
+    @Override
+    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+
+        if (this.getLastPreyUUID() != null) {
+            compound.putUUID("LastPrey", this.getLastPreyUUID());
+        }
+    }
+
+    @Override
+    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+
+        if (this.level() instanceof ServerLevel) {
+            if (!compound.hasUUID("LastPrey")) {
+                this.setLastPreyUUID(null);
+            } else {
+                UUID uUID = compound.getUUID("LastPrey");
+                this.setLastPreyUUID(uUID);
+                Entity entity = ((ServerLevel)this.level()).getEntity(uUID);
+                if (entity != null) {
+                    this.setLastPrey(entity);
+                }
+            }
+        }
     }
 
     public boolean hasAttackedOnWater;

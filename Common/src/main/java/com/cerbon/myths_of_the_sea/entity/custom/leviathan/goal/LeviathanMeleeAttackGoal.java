@@ -50,6 +50,8 @@ public class LeviathanMeleeAttackGoal extends MeleeAttackGoal {
                         if (newDistToEnemySqr <= d1 && this.getTicksUntilNextAttack() <= 0) {
                             this.resetAttackCooldown();
                             this.leviathan.doHurtTarget(enemy);
+                            this.leviathan.setLastPrey(enemy);
+                            this.leviathan.setLastPreyUUID(enemy.getUUID());
                         }
                     },
                     15,
