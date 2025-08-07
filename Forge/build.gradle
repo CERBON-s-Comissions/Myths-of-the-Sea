@@ -57,7 +57,7 @@ dependencies {
     modRuntimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
     modCompileOnlyApi "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
 
-    modImplementation "curse.maven:free-cam-557076:${free_cam_version}"
+    //modImplementation "curse.maven:free-cam-557076:${free_cam_version}"
     modImplementation "curse.maven:jade-324717:${jade_version_forge}"
 
     // All Projects Dependencies

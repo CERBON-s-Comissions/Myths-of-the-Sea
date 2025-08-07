@@ -14,6 +14,7 @@
   ],
   "client": [
     "items.HumanoidModelMixin",
+    "items.ItemColorsMixin",
     "items.ItemInHandRendererMixin",
     "kraken.ClientPacketListenerMixin",
     "kraken.GuiMixin",

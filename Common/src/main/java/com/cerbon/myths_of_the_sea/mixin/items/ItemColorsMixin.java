@@ -1,4 +1,4 @@
-package com.cerbon.myths_of_the_sea.fabric.mixin;
+package com.cerbon.myths_of_the_sea.mixin.items;
 
 import com.cerbon.myths_of_the_sea.item.custom.MTSSpawnEggItem;
 import com.llamalad7.mixinextras.sugar.Local;
