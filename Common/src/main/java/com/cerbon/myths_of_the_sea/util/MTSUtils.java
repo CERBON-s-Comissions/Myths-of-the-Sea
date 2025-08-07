@@ -69,7 +69,7 @@ public final class MTSUtils {
         }
 
         /**
-        Simple check to make the dualwield animations
+        Simple check to make the dualwield animations and extra damage
          */
         public static boolean hasDualwieldWeapon(LivingEntity entity){
             return

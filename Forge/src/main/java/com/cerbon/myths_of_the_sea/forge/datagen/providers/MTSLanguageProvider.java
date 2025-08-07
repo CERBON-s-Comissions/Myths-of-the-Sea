@@ -36,6 +36,8 @@ public class MTSLanguageProvider extends LanguageProvider {
 
         add("item.minecraft.tipped_arrow.effect.very_long_night_vision", "Arrow of Night Vision");
 
+        add("item.myths_of_the_sea.bunyip_claw.tooltip", "+2 Attack Damage when dual wielding");
+
 //        MTSSounds.SOUNDS.getEntries().forEach(this::addSubtitleTranslation);
         //Subtitles
         addSubtitleTranslation(MTSSounds.ABAIA_IDLE, "Abaia groans");
