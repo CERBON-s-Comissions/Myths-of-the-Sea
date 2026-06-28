@@ -8,6 +8,16 @@ dependencies {
     modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 
     include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}")))
+
+    // Valkyrien Skies
+    modApi("org.valkyrienskies:valkyrienskies-120-common:${vs2_version}")
+    compileOnly("org.valkyrienskies.core:api:${vscore_version}")
+    compileOnly("org.valkyrienskies.core:api-game:${vscore_version}")
+    compileOnly("org.valkyrienskies.core:util:${vscore_version}")
+    compileOnly("org.valkyrienskies.core:impl:${vscore_version}")
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10"
+    api "org.jetbrains.kotlin:kotlin-reflect:1.9.10"
 }
 
 architectury {

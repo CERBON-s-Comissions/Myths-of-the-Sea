@@ -6,6 +6,7 @@ import com.cerbon.cerbons_api.api.multipart_entities.entity.MultipartAwareEntity
 import com.cerbon.cerbons_api.api.multipart_entities.util.CompoundOrientedBox;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
 import com.cerbon.cerbons_api.api.static_utilities.SoundUtils;
+import com.cerbon.myths_of_the_sea.MTSConfig;
 import com.cerbon.myths_of_the_sea.entity.custom.leviathan.LeviathanMoveControl;
 import com.cerbon.myths_of_the_sea.entity.custom.util.ExtraReachNearestAttackGoal;
 import com.cerbon.myths_of_the_sea.entity.custom.kraken.goal.KrakenMeleeAttackGoal;
@@ -120,8 +121,17 @@ public class KrakenEntity extends WaterAnimal implements GeoEntity, MultipartAwa
     }
 
     @SuppressWarnings({"unused", "deprecation"})
-    public static boolean surfaceWaterSpawnRulesDeepAndNotNearKraken(
-            EntityType<? extends WaterAnimal> waterAnimal, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+    public static boolean surfaceWaterSpawnRulesDeepAndNotNearKraken(EntityType<? extends WaterAnimal> waterAnimal, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        boolean raining = level.getLevelData().isRaining();
+        boolean thundering = level.getLevelData().isThundering();
+
+        double willCancell = MTSConfig.krakenNormalSpawnProbability();
+        if (thundering) willCancell = MTSConfig.krakenThunderSpawnProbability();
+        else if (raining) willCancell = MTSConfig.krakenRainSpawnProbability();
+
+        //Random cancellation chance
+        if (random.nextIntBetweenInclusive(0, 100) > willCancell) return false;
+
         int radiusToSearchKraken=200;
 
         int seaLevel = level.getSeaLevel();

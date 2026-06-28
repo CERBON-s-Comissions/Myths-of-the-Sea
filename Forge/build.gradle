@@ -39,6 +39,13 @@ loom {
     }
 }
 
+repositories {
+    maven {
+        name = "KotlinForForge"
+        url = "https://thedarkcolour.github.io/KotlinForForge/"
+    }
+}
+
 dependencies {
     forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
@@ -66,6 +73,18 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+
+    // Valkyrien Skies
+    modApi("org.valkyrienskies:valkyrienskies-120-forge:${vs2_version}") { transitive = false }
+
+    implementation("org.valkyrienskies.core:api:$vscore_version")
+    implementation("org.valkyrienskies.core:api-game:$vscore_version")
+    implementation("org.valkyrienskies.core:util:$vscore_version")
+    implementation("org.valkyrienskies.core:impl:$vscore_version")
+
+    // Add Kotlin for Forge.
+    // Add Kotlin for Forge (3.12.0)
+    forgeRuntimeLibrary("maven.modrinth:kotlin-for-forge:${kotlin_version}")
 }
 
 processResources {

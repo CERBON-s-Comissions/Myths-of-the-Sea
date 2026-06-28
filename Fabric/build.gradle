@@ -59,6 +59,13 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+
+    // Valkyrien Skies
+    // Remove the next line if you don't want to depend on the API
+    modApi("org.valkyrienskies:valkyrienskies-120-fabric:${vs2_version}")
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
 
 processResources {

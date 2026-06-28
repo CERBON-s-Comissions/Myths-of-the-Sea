@@ -1,10 +1,12 @@
-# Changelog
+# 1.1.0
+### Additions
+- Added a config file to tweak the spawning values
 
-All notable changes to this project will be documented in this file.
+### Changes
+- Decreased leviathan, kraken and bake kujira spawning, and making them depend on the weather
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### Fixes
+- Modified logic for mixin related to 
 
-## [1.0.0] - release date
-
+## 1.0.0
 - Initial release

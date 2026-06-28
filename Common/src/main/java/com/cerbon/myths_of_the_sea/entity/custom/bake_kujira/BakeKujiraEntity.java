@@ -5,15 +5,21 @@ import com.cerbon.cerbons_api.api.multipart_entities.entity.EntityBounds;
 import com.cerbon.cerbons_api.api.multipart_entities.entity.MultipartAwareEntity;
 import com.cerbon.cerbons_api.api.multipart_entities.util.CompoundOrientedBox;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
+import com.cerbon.myths_of_the_sea.MTSConfig;
 import com.cerbon.myths_of_the_sea.entity.custom.abaia.goal.AbaiaMeleeAttackGoal;
 import com.cerbon.myths_of_the_sea.entity.custom.util.BreachingWaterBoundPathNavigation;
 import com.cerbon.myths_of_the_sea.util.GeoControllersUtil;
 import com.cerbon.myths_of_the_sea.item.MTSItems;
 import com.cerbon.myths_of_the_sea.sound.MTSSounds;
+import com.cerbon.myths_of_the_sea.util.MTSUtils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -31,7 +37,9 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -70,6 +78,22 @@ public class BakeKujiraEntity extends WaterAnimal implements GeoEntity, Multipar
                 .add(Attributes.MOVEMENT_SPEED, 1.0F)
                 .add(Attributes.FOLLOW_RANGE, 48F)
                 .build();
+    }
+
+    public static boolean checkSurfaceWaterAnimalSpawnRules(EntityType<? extends WaterAnimal> waterAnimal, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        boolean raining = level.getLevelData().isRaining();
+        final long time = level.getLevelData().getDayTime() % 24000; boolean night = time >= 13000 && time < 23000;
+
+        double willCancell = MTSConfig.bakeKujiraNormalSpawnProbability();
+        if (raining) willCancell = MTSConfig.bakeKujiraRainSpawnProbability();
+        else if (night) willCancell = MTSConfig.bakeKujiraNightSpawnProbability();
+
+        //Random cancellation chance
+        if (random.nextIntBetweenInclusive(0, 100) > willCancell) return false;
+
+        int i = level.getSeaLevel();
+        int j = i - 13;
+        return pos.getY() >= j && pos.getY() <= i && level.getFluidState(pos.below()).is(FluidTags.WATER) && level.getBlockState(pos.above()).is(Blocks.WATER);
     }
 
     @Override
@@ -152,6 +176,8 @@ public class BakeKujiraEntity extends WaterAnimal implements GeoEntity, Multipar
     public void tick() {
         super.tick();
 
+//        if(this.level() instanceof ServerLevel serverLevel)
+//            MTSUtils.breakShip(this, serverLevel, 5);
         //Is an undead fish, I think it makes more sense if it doesn't breathe
         this.setAirSupply(this.getMaxAirSupply());
 

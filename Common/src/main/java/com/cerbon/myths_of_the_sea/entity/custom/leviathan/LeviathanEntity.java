@@ -6,6 +6,7 @@ import com.cerbon.cerbons_api.api.multipart_entities.entity.MultipartAwareEntity
 import com.cerbon.cerbons_api.api.multipart_entities.util.CompoundOrientedBox;
 import com.cerbon.cerbons_api.api.static_utilities.CapabilityUtils;
 import com.cerbon.cerbons_api.api.static_utilities.SoundUtils;
+import com.cerbon.myths_of_the_sea.MTSConfig;
 import com.cerbon.myths_of_the_sea.entity.custom.leviathan.goal.LeviathanFleeFromTarget;
 import com.cerbon.myths_of_the_sea.entity.custom.leviathan.goal.LeviathanMeleeAttackGoal;
 import com.cerbon.myths_of_the_sea.entity.custom.leviathan.goal.LeviathanNearestAttackGoal;
@@ -92,11 +93,23 @@ public class LeviathanEntity extends WaterAnimal implements GeoEntity, Multipart
     }
 
     @SuppressWarnings({"unused", "deprecation"})
-    public static boolean surfaceWaterSpawnRulesAndNotNearLeviathan(
-            EntityType<? extends WaterAnimal> waterAnimal, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random
-    ) {
+    public static boolean surfaceWaterSpawnRulesAndNotNearLeviathan(EntityType<? extends WaterAnimal> waterAnimal, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        boolean raining = level.getLevelData().isRaining();
+        boolean thundering = level.getLevelData().isThundering();
+        final long time = level.getLevelData().getDayTime() % 24000; boolean night = time >= 13000 && time < 23000;
 
-        int radiusToSearchLeviathan=120;
+        int radiusToSearchLeviathan= MTSConfig.leviathanNormalSpawnSeparationRadius();
+        if(thundering) radiusToSearchLeviathan= MTSConfig.leviathanThunderSpawnSeparationRadius();
+        else if(raining) radiusToSearchLeviathan= MTSConfig.leviathanRainSpawnSeparationRadius();
+        else if(night) radiusToSearchLeviathan= MTSConfig.leviathanNightSpawnSeparationRadius();
+
+        double willCancell = MTSConfig.leviathanNormalSpawnProbability();
+        if (thundering) willCancell = MTSConfig.leviathanThunderSpawnProbability();
+        else if (raining) willCancell = MTSConfig.leviathanRainSpawnProbability();
+        else if (night) willCancell = MTSConfig.leviathanNightSpawnProbability();
+
+        //Random cancellation chance
+        if (random.nextIntBetweenInclusive(0, 100) > willCancell) return false;
 
         int i = level.getSeaLevel();
         int j = i - 13;

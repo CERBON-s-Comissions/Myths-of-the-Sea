@@ -3,6 +3,7 @@ package com.cerbon.myths_of_the_sea.mixin.items;
 import com.cerbon.myths_of_the_sea.util.MTSUtils;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -23,16 +24,13 @@ public class ItemInHandRendererMixin {
 
     @Shadow private float mainHandHeight;
 
-    @ModifyArg(method = "renderHandsWithItems", at =
-    @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/renderer/ItemInHandRenderer;renderArmWithItem(Lnet/minecraft/client/player/AbstractClientPlayer;FFLnet/minecraft/world/InteractionHand;FLnet/minecraft/world/item/ItemStack;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V")
-    ,index = 4)
-    private float mtg$modifySwingsForDualwield(float swing, @Local InteractionHand interactionHand, @Local(ordinal = 1) float f){
+    @ModifyVariable(method = "renderArmWithItem", at = @At(value = "HEAD"), ordinal = 2, argsOnly = true)
+    private float mtg$modifySwingsForDualwield(float swing, @Local(argsOnly = true) AbstractClientPlayer player, @Local(argsOnly = true, ordinal = 0) float partialTicks){
         if(this.minecraft.player==null)
             return swing;
 
         if(MTSUtils.hasDualwieldWeapon(this.minecraft.player)){
-            return f;
+            return player.getAttackAnim(partialTicks);
         }
 
         return swing;
